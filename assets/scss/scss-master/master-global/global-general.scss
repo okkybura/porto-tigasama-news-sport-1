@@ -17,14 +17,14 @@
 
     // Color
 
-    --color-primary                                             : #000000;
+    --color-primary                                             : #0F0F0F;
     --color-secondary                                           : #000000;
     --color-tertiary                                            : #000000;
     --color-quarter                                             : #000000;
     --color-quinary                                             : #000000;
 
     --color-white                                               : #FFFFFF;
-    --color-black                                               : #000000;
+    --color-black                                               : #0F0F0F;
     --color-grey-super-light                                    : #f1f1f1;
     --color-grey-light                                          : #BABABA;
     --color-grey                                                : #7F7F7F;
@@ -40,25 +40,25 @@
 
     // Font - Family
 
-    --font-family-primary                                       : 'Raymond';
-    --font-family-secondary                                     : 'Spectral';
+    --font-family-primary                                       : 'Anton';
+    --font-family-secondary                                     : 'Inter';
 
-    --font-family-general                                       : 'Spectral';
-    --font-family-title                                         : 'Raymond';
-    --font-family-subtitle                                      : 'Spectral';
-    --font-family-description                                   : 'Spectral';
-    --font-family-date                                          : 'Spectral';
-    --font-family-caption                                       : 'Spectral';
-    --font-family-number                                        : 'Spectral';
-    --font-family-tag                                           : 'Spectral';
-    --font-family-link                                          : 'Raymond';
-    --font-family-button                                        : 'Raymond';
-    --font-family-textprice                                     : 'Spectral';
-    --font-family-sellprice                                     : 'Spectral';
+    --font-family-general                                       : 'Inter';
+    --font-family-title                                         : 'Anton';
+    --font-family-subtitle                                      : 'Inter';
+    --font-family-description                                   : 'Inter';
+    --font-family-date                                          : 'Inter';
+    --font-family-caption                                       : 'Inter';
+    --font-family-number                                        : 'Inter';
+    --font-family-tag                                           : 'Inter';
+    --font-family-link                                          : 'Inter';
+    --font-family-button                                        : 'Inter';
+    --font-family-textprice                                     : 'Inter';
+    --font-family-sellprice                                     : 'Inter';
 
     // Font - Weight
 
-    --font-weight-title                                         : 900;
+    --font-weight-title                                         : 400;
     --font-weight-subtitle                                      : 700;
     --font-weight-description                                   : 400;
     --font-weight-date                                          : 400;
@@ -168,9 +168,9 @@ body {
 
     font-family                 : var(--font-family-general);
 
-    color                       : var(--color-white);
+    color                       : var(--color-black);
 
-    background                  : var(--color-black);
+    background                  : var(--color-white);
 
     &.active {
         @include overflow-hidden;

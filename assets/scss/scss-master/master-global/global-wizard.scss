@@ -238,13 +238,37 @@ body {
 
         z-index                 : 10;
 
-        background              : var(--color-black);
+        background              : var(--color-white);
     }
 
     // ----- Main - Theme ----- //
 
     .theme {
 
+        // Hero
+
+        &.hero {
+
+            // Primary
+
+            &.primary {
+                background          : var(--color-black);
+                
+                // Header
+
+                .hero-header {
+                    @include text-align-center;
+
+                    .header-text {
+                        .title {
+                            .text-title {
+
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
