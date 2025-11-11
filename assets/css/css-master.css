@@ -9935,7 +9935,7 @@ textarea.form-control-lg {
   --font-family-description: "Inter";
   --font-family-date: "Inter";
   --font-family-caption: "Inter";
-  --font-family-number: "Inter";
+  --font-family-number: "Anton";
   --font-family-tag: "Inter";
   --font-family-link: "Inter";
   --font-family-button: "Inter";
@@ -9946,10 +9946,10 @@ textarea.form-control-lg {
   --font-weight-description: 400;
   --font-weight-date: 400;
   --font-weight-caption: 900;
-  --font-weight-number: 900;
+  --font-weight-number: 400;
   --font-weight-tag: 900;
   --font-weight-link: 400;
-  --font-weight-button: 900;
+  --font-weight-button: 700;
   --font-weight-textprice: 900;
   --font-weight-sellprice: 900;
   --font-weight-thin: 100;
@@ -9965,11 +9965,11 @@ textarea.form-control-lg {
   --font-weight-heavy: 900;
   --font-size-general: 16;
   --font-size-title: 75;
-  --font-size-subtitle: 24;
+  --font-size-subtitle: 16;
   --font-size-description: 18;
   --font-size-date: 16;
   --font-size-caption: 16;
-  --font-size-number: 42.5;
+  --font-size-number: 90;
   --font-size-tag: 20;
   --font-size-link: 12;
   --font-size-button: 14;
@@ -10922,12 +10922,35 @@ a ::before, a ::after, button ::before, button ::after {
   width: 100% !important;
   padding-top: calc(15 / var(--vw) * var(--multiplier)) !important;
   padding-bottom: calc(15 / var(--vw) * var(--multiplier)) !important;
+  padding-left: calc(35 / var(--vw) * var(--multiplier)) !important;
+  padding-right: calc(35 / var(--vw) * var(--multiplier)) !important;
   justify-content: space-between;
-  background: var(--color-grey-super-light);
+  background: var(--color-white);
   border: none;
   border-radius: 50em;
 }
-.btn-default.btn-solid > span:before {
+.btn-default.btn-solid > span > span {
+  display: flex;
+  align-items: center;
+}
+.btn-default.btn-solid > span span.icon {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+.btn-default.btn-solid > span span.icon svg {
+  fill: var(--color-black);
+  mix-blend-mode: difference;
+}
+.btn-default.btn-solid > span span.text > span:nth-child(1), .btn-default.btn-solid > span span.time > span:nth-child(1) {
+  color: var(--color-black);
+}
+.btn-default.btn-solid > span span.text > span:nth-child(2), .btn-default.btn-solid > span span.time > span:nth-child(2) {
+  color: var(--color-black);
+}
+.btn-default.btn-solid.primary > span {
+  background: var(--color-black);
+}
+.btn-default.btn-solid.primary > span:before {
   position: absolute;
   content: "";
   width: 100%;
@@ -10935,38 +10958,23 @@ a ::before, a ::after, button ::before, button ::after {
   bottom: -175%;
   left: 50%;
   transform: translateX(-50%);
-  background: var(--color-black);
+  background: var(--color-white);
   border-radius: 100%;
 }
-.btn-default.btn-solid > span > span {
-  display: flex;
-  align-items: center;
-}
-.btn-default.btn-solid > span > span > span {
-  margin-right: calc(15 / var(--vw) * var(--multiplier)) !important;
-}
-.btn-default.btn-solid > span > span > span:last-child {
-  margin-right: 0 !important;
-}
-.btn-default.btn-solid > span span.icon {
-  margin-left: 0 !important;
-  margin-right: 0 !important;
-}
-.btn-default.btn-solid > span span.icon svg {
-  fill: var(--color-white);
-  mix-blend-mode: difference;
-}
-.btn-default.btn-solid > span span.text > span:nth-child(1), .btn-default.btn-solid > span span.time > span:nth-child(1) {
-  color: var(--color-black);
-}
-.btn-default.btn-solid > span span.text > span:nth-child(2), .btn-default.btn-solid > span span.time > span:nth-child(2) {
+.btn-default.btn-solid.primary > span span.text > span:nth-child(1), .btn-default.btn-solid.primary > span span.time > span:nth-child(1) {
   color: var(--color-white);
 }
-.btn-default.btn-solid:hover > span:before {
+.btn-default.btn-solid.primary > span span.text > span:nth-child(2), .btn-default.btn-solid.primary > span span.time > span:nth-child(2) {
+  color: var(--color-black);
+}
+.btn-default.btn-solid.primary:hover > span:before {
   height: 100% !important;
   width: 125%;
   bottom: 0;
   border-radius: 50em;
+}
+.btn-default.btn-solid.secondary > span {
+  background: var(--color-white);
 }
 .btn-default.btn-icon > span {
   position: relative;
@@ -11458,8 +11466,115 @@ body .content.page-load-progress {
 .wizard .theme.hero.primary {
   background: var(--color-black);
 }
+.wizard .theme.hero.primary .section-wrapper.primary {
+  position: relative;
+  overflow: hidden;
+  height: 100vh;
+}
+.wizard .theme.hero.primary .section-wrapper.primary > .wrapper-inner {
+  position: absolute;
+  width: 100% !important;
+  z-index: 10;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 .wizard .theme.hero.primary .hero-header {
   text-align: center;
+}
+.wizard .theme.hero.primary .hero-header .header-text {
+  margin-bottom: calc(35 / var(--vw) * var(--multiplier)) !important;
+}
+.wizard .theme.hero.primary .hero-header .header-text .title .text-title {
+  font-size: calc(160 / var(--vw) * var(--multiplier));
+  color: var(--color-white);
+}
+.wizard .theme.hero.primary .hero-header .header-text .subtitle .text-subtitle {
+  font-size: calc(var(--font-size-h6) / var(--vw) * var(--multiplier));
+  color: var(--color-white);
+}
+.wizard .theme.hero.primary .hero-header .header-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.wizard .theme.hero.primary .hero-header .header-button .button {
+  margin-right: calc(10 / var(--vw) * var(--multiplier)) !important;
+}
+.wizard .theme.hero.primary .hero-header .header-button .button:last-child {
+  margin-right: 0 !important;
+}
+.wizard .theme.hero.primary .hero-content .col-content-outer {
+  position: relative;
+  width: 100%;
+  min-height: 1%;
+  padding: 0 calc(15 / var(--vw) * var(--multiplier));
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 100%;
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+.wizard .theme.hero.primary .hero-content .col-content-outer .col-content-inner:first-child {
+  position: relative;
+  width: 100%;
+  min-height: 1%;
+  padding: 0 calc(15 / var(--vw) * var(--multiplier));
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 33.33333%;
+  flex: 0 0 33.33333%;
+  max-width: 33.33333%;
+}
+.wizard .theme.hero.primary .hero-content .col-content-outer .col-content-inner:last-child {
+  position: relative;
+  width: 100%;
+  min-height: 1%;
+  padding: 0 calc(15 / var(--vw) * var(--multiplier));
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 66.66667%;
+  flex: 0 0 66.66667%;
+  max-width: 66.66667%;
+}
+.wizard .theme.hero.primary .hero-content .content-text .subtitle .text-subtitle {
+  color: var(--color-white);
+}
+.wizard .theme.hero.primary .hero-content .content-text .desc .text-description {
+  margin-bottom: 0 !important;
+  color: var(--color-white);
+}
+.wizard .theme.hero.primary .hero-content .content-list {
+  height: 100% !important;
+}
+.wizard .theme.hero.primary .hero-content .content-list > ul {
+  display: flex;
+  height: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  list-style: none;
+}
+.wizard .theme.hero.primary .hero-content .content-list > ul > li {
+  display: flex;
+  height: 100% !important;
+  flex-direction: column;
+  width: 33.3333333333%;
+}
+.wizard .theme.hero.primary .hero-content .content-list > ul > li .list-text {
+  margin-bottom: auto !important;
+}
+.wizard .theme.hero.primary .hero-content .content-list > ul > li .list-text .subtitle .text-subtitle {
+  color: var(--color-white);
+}
+.wizard .theme.hero.primary .hero-content .content-list > ul > li .list-number .number > span {
+  color: var(--color-white);
+}
+.wizard .theme.hero.primary .hero-content .content-list > ul > li .list-number .number > span > span {
+  font-size: calc(var(--font-size-h5) / var(--vw) * var(--multiplier));
+}
+.wizard .theme.information-list.primary {
+  background: var(--color-black);
+}
+.wizard .theme.information-list.primary .section-wrapper.primary {
+  position: relative;
+  overflow: hidden;
 }
 
 /*# sourceMappingURL=css-master.css.map */

@@ -49,7 +49,7 @@
     --font-family-description                                   : 'Inter';
     --font-family-date                                          : 'Inter';
     --font-family-caption                                       : 'Inter';
-    --font-family-number                                        : 'Inter';
+    --font-family-number                                        : 'Anton';
     --font-family-tag                                           : 'Inter';
     --font-family-link                                          : 'Inter';
     --font-family-button                                        : 'Inter';
@@ -63,10 +63,10 @@
     --font-weight-description                                   : 400;
     --font-weight-date                                          : 400;
     --font-weight-caption                                       : 900;
-    --font-weight-number                                        : 900;
+    --font-weight-number                                        : 400;
     --font-weight-tag                                           : 900;
     --font-weight-link                                          : 400;
-    --font-weight-button                                        : 900;
+    --font-weight-button                                        : 700;
     --font-weight-textprice                                     : 900;
     --font-weight-sellprice                                     : 900;
 
@@ -86,11 +86,11 @@
 
     --font-size-general                                         : 16;
     --font-size-title                                           : 75;
-    --font-size-subtitle                                        : 24;
+    --font-size-subtitle                                        : 16;
     --font-size-description                                     : 18;
     --font-size-date                                            : 16;
     --font-size-caption                                         : 16;
-    --font-size-number                                          : 42.5;
+    --font-size-number                                          : 90;
     --font-size-tag                                             : 20;
     --font-size-link                                            : 12;
     --font-size-button                                          : 14;
@@ -1044,44 +1044,19 @@ a, button {
             @include width-100;
 
             @include py-3;
+            @include px-5;
 
             justify-content         : space-between;
 
-            background              : var(--color-grey-super-light);
+            background              : var(--color-white);
 
             border                  : none;
             border-radius           : 50em;
-
-            &:before {
-                @include position-absolute;
-
-                content             : '';
-
-                width               : 100%;
-                height              : calc(75 / var(--vw) * var(--multiplier));
-
-                bottom              : -175%;
-                left                : 50%;
-
-                transform           : translateX(-50%);
-
-                background          : var(--color-black);
-
-                border-radius       : 100%;
-            }
 
             > span {
                 @include display-flex;
 
                 @include align-items-center;
-
-                > span {
-                    @include mr-3;
-
-                    &:last-child {
-                        @include mr-0;
-                    }
-                }
             }
 
             span {
@@ -1089,7 +1064,7 @@ a, button {
                     @include mx-0;
                     
                     svg {
-                        fill                : var(--color-white);
+                        fill                : var(--color-black);
 
                         mix-blend-mode      : difference;
                     }
@@ -1102,24 +1077,72 @@ a, button {
                         }
 
                         &:nth-child(2) {
-                            color           : var(--color-white);
+                            color           : var(--color-black);
                         }
                     }
                 }
             }
         }
 
-        &:hover {
+        // Primary
+
+        &.primary {
             > span {
+                background                  : var(--color-black);
+
                 &:before {
-                    @include height-100;
+                    @include position-absolute;
 
-                    width                   : 125%;
+                    content                 : '';
 
-                    bottom                  : 0;
+                    width                   : 100%;
+                    height                  : calc(75 / var(--vw) * var(--multiplier));
 
-                    border-radius           : 50em;
+                    bottom                  : -175%;
+                    left                    : 50%;
+
+                    transform               : translateX(-50%);
+
+                    background              : var(--color-white);
+
+                    border-radius           : 100%;
                 }
+
+                span {
+                    &.text, &.time {
+                        > span {
+                            &:nth-child(1) {
+                                color           : var(--color-white);
+                            }
+
+                            &:nth-child(2) {
+                                color           : var(--color-black);
+                            }
+                        }
+                    }
+                }
+            }
+
+            &:hover {
+                > span {
+                    &:before {
+                        @include height-100;
+
+                        width                   : 125%;
+
+                        bottom                  : 0;
+
+                        border-radius           : 50em;
+                    }
+                }
+            }
+        }
+
+        // Secondary
+
+        &.secondary {
+            > span {
+                background                  : var(--color-white);
             }
         }
     }
