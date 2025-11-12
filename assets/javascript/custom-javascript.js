@@ -202,7 +202,7 @@ document.addEventListener("DOMContentLoaded", () => {
 /* -------------------- Navbar Setting -------------------- */
 
 $(window).scroll(function () {
-    //$(".navbar").toggleClass("scroll", $(this).scrollTop() > 200)
+    $(".navbar").toggleClass("scroll", $(this).scrollTop() > 1)
     $("#scroll-top").toggleClass("scroll", $(this).scrollTop() > 1)
 });
 

@@ -65,7 +65,7 @@
     --font-weight-caption                                       : 900;
     --font-weight-number                                        : 400;
     --font-weight-tag                                           : 900;
-    --font-weight-link                                          : 400;
+    --font-weight-link                                          : 500;
     --font-weight-button                                        : 700;
     --font-weight-textprice                                     : 900;
     --font-weight-sellprice                                     : 900;
@@ -92,7 +92,7 @@
     --font-size-caption                                         : 16;
     --font-size-number                                          : 90;
     --font-size-tag                                             : 20;
-    --font-size-link                                            : 12;
+    --font-size-link                                            : 13;
     --font-size-button                                          : 14;
     --font-size-icon                                            : 12;
     --font-size-textprice                                       : 20;
@@ -168,9 +168,9 @@ body {
 
     font-family                 : var(--font-family-general);
 
-    color                       : var(--color-black);
+    color                       : var(--color-white);
 
-    background                  : var(--color-white);
+    background                  : var(--color-black);
 
     &.active {
         @include overflow-hidden;
@@ -1323,7 +1323,7 @@ a, button {
 
     // Primary
 
-    &.link-primary {
+    &.primary {
         > span {
             &.wrapper {
                 &:before, &:after {

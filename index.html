@@ -44,16 +44,75 @@
             </div>
         </div>
 
+        <!--Navbar - Primary-->
+
+        <nav class="navbar primary navbar-expand-lg">
+            <div class="container">
+                <div class="navbar-wrapper primary">
+                    <ul class="navbar-nav primary">
+                        <li class="nav-item">
+                            <a class="nav-link link-default primary" href="#">
+                                <span class="wrapper">
+                                    <span class="text">
+                                        Package
+                                    </span>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link link-default primary" href="#">
+                                <span class="wrapper">
+                                    <span class="text">
+                                        Dining
+                                    </span>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link link-default primary" href="#">
+                                <span class="wrapper">
+                                    <span class="text">
+                                        Relax
+                                    </span>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link link-default primary" href="#">
+                                <span class="wrapper">
+                                    <span class="text">
+                                        Discover
+                                    </span>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <a class="navbar-brand" href="">
+                        <span class="text">
+                            <span>
+                                Tigasama
+                            </span>
+                        </span>
+                    </a>
+                    <ul class="navbar-nav secondary">
+                        <li class="nav-item">
+                            <a class="btn btn-block btn-nav btn-default btn-solid secondary">
+                                <span class="wrapper">
+                                    <span class="text">
+                                        Book Now
+                                    </span>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
         <div id="smooth-wrapper">
             <div id="smooth-content">
                 <div class="page">
                     <div class="page-wrapper primary">
-
-                        <!--Navbar - Primary-->
-
-                        <nav class="navbar primary navbar-expand-lg">
-
-                        </nav>
 
                         <div class="menu-overlay"></div>
 
@@ -78,30 +137,23 @@
                                                     <div class="header-text">
                                                         <div class="subtitle">
                                                             <h4 class="text-subtitle">
-                                                                East Nusa Tenggara
+                                                                Discover Labuan Bajo
                                                             </h4>
                                                         </div>
                                                         <div class="title">
                                                             <h1 class="text-title">
-                                                                Sailing Komodo
+                                                                Sailing
+                                                                <br />
+                                                                Komodo
                                                             </h1>
                                                         </div>
                                                     </div>
                                                     <div class="header-button">
                                                         <div class="button">
-                                                            <a class="btn btn-block btn-header btn-default btn-solid primary" href="javascript:void(0);">
+                                                            <a class="btn btn-block btn-header btn-default btn-solid primary">
                                                                 <span class="wrapper">
                                                                     <span class="text">
-                                                                        Register Now
-                                                                    </span>
-                                                                </span>
-                                                            </a>
-                                                        </div>
-                                                        <div class="button">
-                                                            <a class="btn btn-block btn-header btn-default btn-solid secondary" href="javascript:void(0);">
-                                                                <span class="wrapper">
-                                                                    <span class="text">
-                                                                        Trip Details
+                                                                        Explore More
                                                                     </span>
                                                                 </span>
                                                             </a>
@@ -189,9 +241,27 @@
                                                 </div> -->
                                             </div>
                                         </div>
-                                        <div class="section-background">
-                                            <div class="background" data-speed="0.5">
-                                                <img src="assets/images/root/hero-background-1.jpg" />
+                                        <div class="section-carousel">
+                                            <div class="carousel-cell">
+                                                <div class="carousel-image" data-speed="0.5">
+                                                    <div class="image">
+                                                        <img src="assets/images/root/hero-background-1.jpg" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="carousel-cell">
+                                                <div class="carousel-image" data-speed="0.5">
+                                                    <div class="image">
+                                                        <img src="assets/images/root/hero-background-2.jpg" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="carousel-cell">
+                                                <div class="carousel-image" data-speed="0.5">
+                                                    <div class="image">
+                                                        <img src="assets/images/root/hero-background-3.jpg" />
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -212,7 +282,7 @@
                             </div>
                         </div>
 
-                        <footer style="height: 100vh;">
+                        <footer class="footbar primary">
 
                         </footer>
                     </div>
@@ -307,6 +377,49 @@
             setTimeout(function () {
                 $('body .content').addClass('page-load-complete');
  
+                var interval = 6000;
+                var transitionTime = 2000;
+
+                $('.section-carousel').each(function () {
+                    var $carousel = $(this);
+                    var $cells = $carousel.find('.carousel-cell');
+                    var current = 0;
+                    var carouselInterval;
+                    var isPaused = false;
+
+                    $cells.eq(current).addClass('active');
+
+                    function startCarousel() {
+                        if (carouselInterval) clearInterval(carouselInterval);
+
+                        carouselInterval = setInterval(function () {
+                            var $currentCell = $cells.eq(current);
+
+                            current = (current + 1) % $cells.length;
+                            var $nextCell = $cells.eq(current);
+
+                            $currentCell.removeClass('active').addClass('leaving');
+                            $nextCell.addClass('active');
+
+                            setTimeout(function () {
+                                $currentCell.removeClass('leaving');
+                            }, transitionTime);
+
+                        }, interval);
+                    }
+
+                    startCarousel();
+
+                    $(document).on('visibilitychange', function () {
+                        if (document.hidden) {
+                            clearInterval(carouselInterval);
+                            isPaused = true;
+                        } else {
+                            startCarousel();
+                            isPaused = false;
+                        }
+                    });
+                });
             }, 1750);
             setTimeout(function () {
                 enableWheelScroll();
