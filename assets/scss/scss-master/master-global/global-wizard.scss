@@ -629,6 +629,110 @@ body {
                 }
             }
         }
+
+        // Service List
+
+        &.service-list {
+
+            // Primary
+
+            &.primary {
+                // @include overflow-hidden;
+
+                padding                     : 15vh 0;
+
+                background                  : var(--color-black);
+
+                // Header
+
+                .service-list-header {
+                    @include position-relative;
+
+                    @include mx-auto;
+
+                    margin                          : 20vh 0;
+
+                    height                          : calc(200 / var(--vw) * var(--multiplier));
+
+                    border-top                      : calc(1 / var(--vw) * var(--multiplier)) solid rgba($color-white, 0.25);
+                    border-bottom                   : calc(1 / var(--vw) * var(--multiplier)) solid rgba($color-white, 0.25);
+
+                    .container {
+                        @include max-width-100;
+
+                        @include p-0;
+                    }
+
+                    .header-mask {
+                        @include position-absolute;
+
+                        @include width-100;
+
+                        z-index                     : 10;
+
+                        top                         : 50%;
+                        left                        : 50%;
+
+                        transform                   : translate(-50%, -50%);
+
+                        mask-image                  : url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27356%27 height=%27356%27 fill=%27none%27 viewBox=%270 0 356 356%27%3E%3Cpath fill=%27%23D9D9D9%27 d=%27M178 0s-2.346 100.135 37.76 140.24S356 178 356 178s-100.135-2.346-140.24 37.76S178 356 178 356s2.346-100.135-37.76-140.24S0 178 0 178s100.135 2.346 140.24-37.76S178 0 178 0%27/%3E%3C/svg%3E");
+                        mask-position               : center center;
+                        mask-repeat                 : no-repeat;
+
+                        .mask-image {
+                            .image {
+                                img {
+                                    object-fit          : cover;
+
+                                    height              : 250vh;
+                                }
+                            }
+                        }
+                    }
+
+                    .header-marquee {
+                        .marquee-text {
+                            @include position-relative;
+
+                            transform               : translateX(calc(-1500 / var(--vw) * var(--multiplier)));
+
+                            .title {
+                                @include position-absolute;
+
+                                .text-title {
+                                    @include font-primary;
+
+                                    @include mr-5;
+
+                                    font-size       : calc(175 / var(--vw) * var(--multiplier));
+                                    font-weight     : var(--font-weight-medium);
+
+                                    color           : var(--color-white);
+                                }
+                            }
+                        }
+                    }
+                }
+
+                // Content
+
+                .service-list-content {
+                    @include position-relative;
+
+                    z-index                         : 10;
+
+                    padding-top                     : 75vh;
+
+                    .col-content-outer {
+                        @include col-12;
+
+                        .col-content-inner {
+                            @include col-4;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
