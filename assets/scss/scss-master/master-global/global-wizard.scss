@@ -200,6 +200,8 @@ body {
 
         .container {
             @include p-0;
+
+            max-width               : 93.5%; 
         }
 
         .navbar-wrapper {
@@ -504,8 +506,6 @@ body {
 
                     @include mx-auto;
 
-                    
-
                     .header-wrapper {
 
                         // Primary
@@ -543,6 +543,84 @@ body {
                                                 @include text-align-center;
                                             }
                                         }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                // Content
+
+                .information-list-content {
+                    .content-wrapper {
+
+                        // Primary
+
+                        &.primary {
+                            @include position-fixed;
+
+                            @include overflow-hidden;
+
+                            @include p-5;
+
+                            z-index                 : 10;
+
+                            width                   : calc(250 / var(--vw) * var(--multiplier));
+                            height                  : calc(230 / var(--vw) * var(--multiplier));
+
+                            top                     : 50%;
+                            right                   : 3.75%;
+
+                            transform               : translateY(-50%);
+
+                            background              : rgba($color-white, 0.05);
+
+                            border                  : calc(1 / var(--vw) * var(--multiplier)) solid rgba($color-white, 0.25);
+                            border-radius           : calc(10 / var(--vw) * var(--multiplier));
+
+                            backdrop-filter         : blur(5px);
+
+                            > .wrapper-inner {
+                                @include position-fixed;
+
+                                @include p-5;
+
+                                width               : calc(250 / var(--vw) * var(--multiplier));
+                                height              : calc(230 / var(--vw) * var(--multiplier));
+
+                                top                 : 50%;
+                                right               : 3.75%;
+
+                                transform           : translateY(-50%);
+                            }
+
+                            .content-icon {
+                                @include mb-4;
+
+                                .icon {
+                                    @include display-inline-flex;
+
+                                    @include align-items-center;
+
+                                    justify-content         : center;
+
+                                    width                   : calc(60 / var(--vw) * var(--multiplier));
+                                    height                  : calc(60 / var(--vw) * var(--multiplier));
+
+                                    border                  : calc(1 / var(--vw) * var(--multiplier)) solid rgba($color-white, 0.25);
+                                    border-radius           : 100%;
+                                }
+                            }
+
+                            .content-text {
+                                .desc {
+                                    .text-description {
+                                        @include mb-0;
+
+                                        font-size           : calc(13 / var(--vw) * var(--multiplier));
+
+                                        color               : var(--color-white); 
                                     }
                                 }
                             }

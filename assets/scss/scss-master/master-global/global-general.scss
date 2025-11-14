@@ -87,7 +87,7 @@
     --font-size-general                                         : 16;
     --font-size-title                                           : 75;
     --font-size-subtitle                                        : 16;
-    --font-size-description                                     : 18;
+    --font-size-description                                     : 14;
     --font-size-date                                            : 16;
     --font-size-caption                                         : 16;
     --font-size-number                                          : 90;
@@ -482,6 +482,13 @@ a, button {
             }
         }
     }
+}
+
+// Icon
+
+svg {
+    width               : calc(22.5 / var(--vw) * var(--multiplier));
+    height              : calc(22.5 / var(--vw) * var(--multiplier));
 }
 
 // Text
