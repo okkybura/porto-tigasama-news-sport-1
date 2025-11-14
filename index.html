@@ -109,6 +109,46 @@
             </div>
         </nav>
 
+        <div class="wizard">
+            
+            <section class="section theme information-list outside primary">
+
+                <!-- Header Section -->
+
+                <div class="information-list-header">
+                    <div class="header-wrapper primary">
+                        <div class="wrapper-inner">
+                            <div class="header-quote">
+                                <div class="quote">
+                                    <span class="text-mask">
+                                        Nature is part of who we are, providing the essentials for our health
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="wrapper-inner">
+                            <div class="header-quote">
+                                <div class="quote">
+                                    <span class="text-mask">
+                                        However, we're becoming more isolated from nature than ever before
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="wrapper-inner">
+                            <div class="header-quote">
+                                <div class="quote">
+                                    <span class="text-mask">
+                                        We spend 90% of our time indoors, away from nature
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
         <div id="smooth-wrapper">
             <div id="smooth-content">
                 <div class="page">
@@ -160,85 +200,6 @@
                                                         </div>
                                                     </div>
                                                 </div>
-
-                                                <!-- Content Section -->
-
-                                                <!-- <div class="hero-content">
-                                                    <div class="row">
-                                                        <div class="col-content-outer">
-                                                            <div class="row">
-                                                                <div class="col-content-inner">
-                                                                    <div class="content-text">
-                                                                        <div class="subtitle">
-                                                                            <h4 class="text-subtitle">
-                                                                                Overview
-                                                                            </h4>
-                                                                        </div>
-                                                                        <div class="desc">
-                                                                            <p class="text-description">
-                                                                                Push your limits on paradise ground. Join runners from around the world and race through beaches, trails, and coastal roads in one unforgettable island challenge.
-                                                                            </p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-content-inner">
-                                                                    <div class="content-list">
-                                                                        <ul>
-                                                                            <li>
-                                                                                <div class="list-text">
-                                                                                    <div class="subtitle">
-                                                                                        <h4 class="text-subtitle">
-                                                                                            Distance
-                                                                                        </h4>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="list-number">
-                                                                                    <div class="number">
-                                                                                        <span>
-                                                                                            50 <span>km</span>
-                                                                                        </span>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </li>
-                                                                            <li>
-                                                                                <div class="list-text">
-                                                                                    <div class="subtitle">
-                                                                                        <h4 class="text-subtitle">
-                                                                                            Elevation Gain
-                                                                                        </h4>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="list-number">
-                                                                                    <div class="number">
-                                                                                        <span>
-                                                                                            687 <span>m</span>
-                                                                                        </span>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </li>
-                                                                            <li>
-                                                                                <div class="list-text">
-                                                                                    <div class="subtitle">
-                                                                                        <h4 class="text-subtitle">
-                                                                                            Est Temperature
-                                                                                        </h4>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="list-number">
-                                                                                    <div class="number">
-                                                                                        <span>
-                                                                                            24 <span>c</span>
-                                                                                        </span>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div> -->
                                             </div>
                                         </div>
                                         <div class="section-carousel">
@@ -267,11 +228,8 @@
                                     </div>
                                 </section>
 
-                                <section class="section theme information-list primary">
+                                <section class="section theme information-list inside primary">
                                     <div class="section-wrapper primary">
-                                        <div class="wrapper-inner">
-
-                                        </div>
                                         <div class="section-background">
                                             <div class="background">
                                                 <img data-speed="0.5" src="/assets/images/root/test.jpg" />
@@ -298,6 +256,65 @@
 
     <script src="assets/javascript/custom-select2.js"></script>
     <script src="assets/javascript/custom-javascript.js"></script>
+
+    <script>
+        $(document).ready(function () {
+
+            // Split text into lines
+
+            document.querySelectorAll(".text-mask").forEach((el) => {
+                SplitText.create(el, {
+                    type: "lines",
+                    linesClass: "line",
+                    autoSplit: true,
+                    mask: "lines",
+                });
+            });
+
+            const container = document.querySelector(".information-list.primary.inside");
+            const panels = gsap.utils.toArray(".information-list.primary.outside .information-list-header .wrapper-inner");
+
+            const containerHeight = container.offsetHeight;
+            const segment = containerHeight / 3.25;
+
+            panels.forEach((panel, index) => {
+                const lines = panel.querySelectorAll(".text-mask .line");
+
+                // Timeline for this panel
+                const tl = gsap.timeline({ paused: true });
+                tl.fromTo(
+                    lines,
+                    { y: "100%" },
+                    { y: "0%", stagger: 0.025, duration: 1 }
+                );
+
+                // Timeline for previous panel to hide
+                let prevTl;
+                if (index > 0) {
+                    const prevLines = panels[index - 1].querySelectorAll(".text-mask .line");
+                    prevTl = gsap.timeline({ paused: true });
+                    prevTl.to(prevLines, { y: "100%", stagger: 0.025, duration: 1 });
+                }
+
+                ScrollTrigger.create({
+                    trigger: container,
+                    start: () => `${index * segment}px center`,
+                    end: () => `${(index + 1) * segment}px center`,
+                    scrub: true,
+                    markers: true,
+                    onUpdate: self => {
+                        // Current panel animates in
+                        tl.progress(self.progress);
+
+                        // Previous panel animates out smoothly
+                        if (prevTl) {
+                            prevTl.progress(self.progress);
+                        }
+                    },
+                });
+            });
+        });
+    </script>
 
     <script>
 

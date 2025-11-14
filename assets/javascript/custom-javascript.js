@@ -70,6 +70,9 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
+    // Splitting Text - General - Line
+
+
     // Splitting Text - General - Character
 
     document.querySelectorAll('.split-char').forEach(textSpan => {

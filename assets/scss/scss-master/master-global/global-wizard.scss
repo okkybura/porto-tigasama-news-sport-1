@@ -276,7 +276,7 @@ body {
 
         z-index         : 1020;
 
-        height          : 100vh;
+        height          : 150vh;
 
         // &:before {
         //     @include position-absolute;
@@ -491,8 +491,61 @@ body {
 
                             border-bottom       : calc(1 / var(--vw) * var(--multiplier)) solid var(--color-black);
 
-                            mask-image          : linear-gradient(to bottom, var(--color-black) 50%, transparent 100%);
-                            mask-mode           : alpha;
+                            // mask-image          : linear-gradient(to bottom, var(--color-black) 50%, transparent 100%);
+                            // mask-mode           : alpha;
+                        }
+                    }
+                }
+
+                // Header
+
+                .information-list-header {
+                    @include text-align-center;
+
+                    @include mx-auto;
+
+                    
+
+                    .header-wrapper {
+
+                        // Primary
+
+                        &.primary {
+                            > .wrapper-inner {
+                                @include position-fixed;
+
+                                width                   : calc(850 / var(--vw) * var(--multiplier));
+
+                                top                     : 50%;
+                                left                    : 50%;
+
+                                transform               : translate(-50%, -50%);
+                            }
+
+                            .header-quote {
+                                .quote {
+                                    > span {
+                                        @include font-primary;
+
+                                        @include text-transform-uppercase;
+
+                                        font-weight             : var(--font-weight-regular);
+                                        font-size               : calc(80 / var(--vw) * var(--multiplier));
+
+                                        letter-spacing          : calc(-1.5 / var(--vw) * var(--multiplier));
+
+                                        line-height             : 1.10;
+
+                                        color                   : var(--color-white);
+
+                                        &.text-mask {
+                                            * {
+                                                @include text-align-center;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                 }

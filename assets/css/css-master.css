@@ -11482,7 +11482,7 @@ body .content.page-load-progress {
 .footbar.primary {
   position: relative;
   z-index: 1020;
-  height: 100vh;
+  height: 150vh;
 }
 
 .menu-overlay {
@@ -11586,8 +11586,30 @@ body .content.page-load-progress {
 .wizard .theme.information-list.primary .section-wrapper.primary .section-background {
   overflow: hidden;
   border-bottom: calc(1 / var(--vw) * var(--multiplier)) solid var(--color-black);
-  mask-image: linear-gradient(to bottom, var(--color-black) 50%, transparent 100%);
-  mask-mode: alpha;
+}
+.wizard .theme.information-list.primary .information-list-header {
+  text-align: center;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+.wizard .theme.information-list.primary .information-list-header .header-wrapper.primary > .wrapper-inner {
+  position: fixed;
+  width: calc(850 / var(--vw) * var(--multiplier));
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.wizard .theme.information-list.primary .information-list-header .header-wrapper.primary .header-quote .quote > span {
+  font-family: var(--font-family-primary);
+  text-transform: uppercase;
+  font-weight: var(--font-weight-regular);
+  font-size: calc(80 / var(--vw) * var(--multiplier));
+  letter-spacing: calc(-1.5 / var(--vw) * var(--multiplier));
+  line-height: 1.1;
+  color: var(--color-white);
+}
+.wizard .theme.information-list.primary .information-list-header .header-wrapper.primary .header-quote .quote > span.text-mask * {
+  text-align: center;
 }
 
 /*# sourceMappingURL=css-master.css.map */
