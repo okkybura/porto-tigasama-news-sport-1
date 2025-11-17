@@ -24,6 +24,47 @@
   font-display      : swap;
 }
 
+@font-face {
+  font-family       : 'PPMori';
+  font-style        : normal;
+  font-weight       : 400;
+  src               : url('/assets/fonts/PPMori/PPMori-Regular.woff2');
+  font-display      : swap;
+}
+
+@font-face {
+  font-family       : 'PPMori';
+  font-style        : normal;
+  font-weight       : 600;
+  src               : url('/assets/fonts/PPMori/PPMori-SemiBold.woff2');
+  font-display      : swap;
+}
+
+@font-face {
+  font-family       : 'EditorialNew';
+  font-style        : normal;
+  font-weight       : 300;
+  src               : url('/assets/fonts/EditorialNew/EditorialNew-Lightitalic.woff2');
+  font-display      : swap;
+}
+
+@font-face {
+  font-family       : 'EditorialNew';
+  font-style        : normal;
+  font-weight       : 400;
+  src               : url('/assets/fonts/EditorialNew/EditorialNew-Italic.woff2');
+  font-display      : swap;
+}
+
+@font-face {
+  font-family       : 'EditorialNew';
+  font-style        : normal;
+  font-weight       : 400;
+  src               : url('/assets/fonts/EditorialNew/EditorialNew-Regular.woff2');
+  font-display      : swap;
+}
+
+
 // Font - Secondary
 
 @font-face {
