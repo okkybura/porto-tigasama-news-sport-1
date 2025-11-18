@@ -706,7 +706,7 @@ body {
             // Primary
 
             &.primary {
-                padding-bottom              : 25vh;
+                padding-bottom              : 40vh;
 
                 background                  : var(--color-black);
 
@@ -763,7 +763,7 @@ body {
                         .marquee-text {
                             @include position-relative;
 
-                            transform                   : translateX(calc(-1300 / var(--vw) * var(--multiplier)));
+                            transform                   : translateX(calc(-1450 / var(--vw) * var(--multiplier)));
 
                             .title {
                                 @include position-absolute;

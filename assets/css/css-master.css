@@ -11929,7 +11929,7 @@ body .content.page-load-progress {
   color: var(--color-white);
 }
 .wizard .theme.service-list.primary {
-  padding-bottom: 25vh;
+  padding-bottom: 40vh;
   background: var(--color-black);
 }
 .wizard .theme.service-list.primary .service-list-header {
@@ -11965,7 +11965,7 @@ body .content.page-load-progress {
 }
 .wizard .theme.service-list.primary .service-list-header .header-marquee .marquee-text {
   position: relative;
-  transform: translateX(calc(-1300 / var(--vw) * var(--multiplier)));
+  transform: translateX(calc(-1450 / var(--vw) * var(--multiplier)));
 }
 .wizard .theme.service-list.primary .service-list-header .header-marquee .marquee-text .title {
   position: absolute;

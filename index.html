@@ -651,7 +651,7 @@
                                                                     <div class="content-image">
                                                                         <div class="image-outer">
                                                                             <div class="image">
-                                                                                <img src="/assets/images/root/service-list-primary-content-image-2.jpg" />
+                                                                                <img src="/assets/images/root/service-list-primary-content-image-3.jpg" />
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -994,10 +994,10 @@
 
                 ScrollTrigger.create({
                     trigger: container,
-                    start: () => `${index * segment}px 25%`,
-                    end: () => `${(index + 1) * segment + gap}px center`,
+                    start: () => `${index * segment} 40%`,
+                    end: () => `${(index + 1) * segment + gap} center`,
                     scrub: true,
-                    markers: true,
+                    markers: false,
                     invalidateOnRefresh: true,
                     onUpdate: self => {
                         tl.progress(self.progress);
@@ -1017,8 +1017,8 @@
 
                 ScrollTrigger.create({
                     trigger: container,
-                    start: () => `${index * segmentContent}px 25%`,
-                    end: () => `${(index + 1) * segmentContent + gap}px top`,
+                    start: () => `${index * segmentContent} 40%`,
+                    end: () => `${(index + 1) * segmentContent + gap} top`,
                     scrub: true,
                     markers: false,
                     invalidateOnRefresh: true,
@@ -1178,8 +1178,8 @@
                 ease: "none",
                 scrollTrigger: {
                     trigger: ".service-list.primary .service-list-header .header-mask",
-                    start: "center center",
-                    end: `+=2000px top`,
+                    start: "33.5% center",
+                    end: `+=4500 top`,
                     scrub: true,
                     markers: false,
                     invalidateOnRefresh: true,
@@ -1205,32 +1205,35 @@
     </script>
 
     <script>
-        const cards = gsap.utils.toArray(".card-stack");
+        $(document).ready(function () {
 
-        cards.forEach((card, index) => {
-            const tween = gsap.to(card, {
-                scrollTrigger: {
+            const cards = document.querySelectorAll(".card-stack");
+
+            cards.forEach((card, index) => {
+                const tween = gsap.to(card, {
+                    scrollTrigger: {
+                        trigger: card,
+                        start: () => 'top bottom-=50',
+                        end: () => `top top`,
+                        scrub: true,
+                        markers: false,
+                        invalidateOnRefresh: true
+                    },
+                    ease: "none",
+                    scale: () => 1 - (cards.length - index) * 0.05
+                });
+
+                ScrollTrigger.create({
                     trigger: card,
-                    start: () => 'top bottom-=50',
-                    end: () => `top top`,
-                    scrub: true,
+                    start: "-21.5% top",
+                    pin: true,
+                    pinSpacing: false,
                     markers: false,
-                    invalidateOnRefresh: true
-                },
-                ease: "none",
-                scale: () => 1 - (cards.length - index) * 0.05
-            });
-
-            ScrollTrigger.create({
-                trigger: card,
-                start: "-21.5% top",
-                pin: true,
-                pinSpacing: false,
-                markers: false,
-                id: 'pin',
-                end: 'max',
-                invalidateOnRefresh: true,
-            });
+                    id: 'pin',
+                    end: () => `+=${cards.length * 100}%`,
+                    invalidateOnRefresh: true,
+                });
+            }); 
         }); 
     </script>
 </body>
