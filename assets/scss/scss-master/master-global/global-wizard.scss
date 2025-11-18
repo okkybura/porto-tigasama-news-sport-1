@@ -157,6 +157,10 @@ body {
     }
 }
 
+// #smooth-wrapper {
+//     clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+// }
+
 // Page
 
 .page {
@@ -166,8 +170,6 @@ body {
         z-index             : 20;
     }
 }
-
-
 
 // Navbar
 
@@ -345,127 +347,6 @@ body {
         // Hero
 
         &.hero {
-
-            // Primary
-
-            // &.primary {
-            //     background          : var(--color-black);
-
-            //     .section-wrapper {
-
-            //         // Primary
-
-            //         &.primary {
-            //             @include position-relative;
-
-            //             @include overflow-hidden;
-
-            //             height              : 100vh;
-
-            //             > .wrapper-inner {
-            //                 @include position-absolute;
-
-            //                 @include width-100;
-
-            //                 z-index         : 10;
-
-            //                 top             : 57.5%;
-            //                 left            : 50%;
-
-            //                 transform       : translate(-50%, -50%);
-            //             }
-            //         }
-            //     }
-
-            //     .section-carousel {
-            //         @include overflow-hidden;
-                    
-            //         .carousel-cell {
-            //             @include position-absolute;
-
-            //             top                             : 0;
-            //             left                            : 0;
-
-            //             transition                      : 2s var(--cubic-bezier-2);
-
-            //             clip-path                       : inset(0 100% 0 0);
-
-            //             .carousel-image {
-            //                 .image {
-            //                     img {
-            //                         transform           : translateX(calc(-150 / var(--vw) * var(--multiplier)));
-
-            //                         transition          : 2s var(--cubic-bezier-2);
-            //                     }
-            //                 }
-            //             }
-
-            //             &.leaving {
-            //                 clip-path                   : inset(0 0 0 100%);
-
-            //                 .carousel-image {
-            //                     .image {
-            //                         img {
-            //                             transform       : translateX(calc(150 / var(--vw) * var(--multiplier)));
-            //                         }
-            //                     }
-            //                 }
-            //             }
-
-            //             &.active {
-            //                 clip-path                   : inset(0 -5% 0 0);
-
-            //                 .carousel-image {
-            //                     .image {
-            //                         img {
-            //                             transform       : translateX(0);
-            //                         }
-            //                     }
-            //                 }
-            //             }
-            //         }
-            //     }
-                
-            //     // Header
-
-            //     .hero-header {
-            //         @include text-align-center;
-
-            //         .header-text {
-            //             @include mb-5;
-
-            //             .title {
-            //                 .text-title {
-            //                     font-size           : calc(150 / var(--vw) * var(--multiplier));
-
-            //                     line-height         : 1;
-            //                 }
-            //             }
-
-            //             .subtitle {
-            //                 .text-subtitle {
-            //                     @include h6;
-            //                 }
-            //             }
-            //         }
-
-            //         .header-button {
-            //             @include display-flex;
-
-            //             @include align-items-center;
-
-            //             justify-content             : center;
-
-            //             .button {
-            //                 @include mr-2;
-
-            //                 &:last-child {
-            //                     @include mr-0;
-            //                 }
-            //             }
-            //         }
-            //     }
-            // }
 
             &.primary {
                 background          : var(--color-black);
@@ -724,6 +605,12 @@ body {
                                             * {
                                                 @include text-align-center;
                                             }
+
+                                            .line-mask {
+                                                .line {
+                                                    transform           :  translateY(100%);
+                                                }
+                                            }
                                         }
                                     }
                                 }
@@ -819,6 +706,8 @@ body {
             // Primary
 
             &.primary {
+                padding-bottom              : 25vh;
+
                 background                  : var(--color-black);
 
                 // Header
@@ -863,8 +752,6 @@ body {
                                 img {
                                     object-fit          : cover;
                                     object-position     : top;
-
-                                    height              : 150vh;
                                 }
                             }
                         }
@@ -911,16 +798,22 @@ body {
                         &.primary {
                             @include mx-auto;
 
-                            max-width               : 80%;
+                            max-width               : 70%;
 
-                            > .wrapper-inner {
+                            .wrapper-inner {
                                 @include text-align-center;
-                                
-                                @include p-5;
+
+                                @include p-4;
+                                @include mb-5;
 
                                 background          : var(--color-white);
 
+                                border              : calc(1 / var(--vw) * var(--multiplier)) solid rgba($color-black, 0.25);
                                 border-radius       : calc(15 / var(--vw) * var(--multiplier));
+
+                                &:last-child {
+                                    @include mb-0;
+                                }
 
                                 .col-wrapper-outer {
                                     @include col-12;
@@ -933,6 +826,19 @@ body {
                                         @include col-6;
                                     }
                                 }
+
+                                .outer {
+                                    .inner {
+                                        @include position-relative;
+
+                                        @include p-4;
+
+                                        padding-top                     : calc(50 / var(--vw) * var(--multiplier)) !important;
+
+                                        border                          : calc(1 / var(--vw) * var(--multiplier)) solid rgba($color-black, 0.25);
+                                        border-radius                   : calc(10 / var(--vw) * var(--multiplier));
+                                    }
+                                }
                             }
 
                             .content-image {
@@ -943,30 +849,171 @@ body {
 
                                     .image {
                                         img {
+                                            object-fit          : cover;
+
+                                            height              : calc(550 / var(--vw) * var(--multiplier));
+
                                             transform           : scale(1.15);
                                         }
                                     }
                                 }
                             }
 
+                            .content-caption {
+                                @include position-absolute;
+
+                                top                             : calc(-17.5 / var(--vw) * var(--multiplier));
+                                left                            : 50%;
+
+                                transform                       : translateX(-50%);
+                                
+                                .caption {
+                                    > span {
+                                        @include display-inline-block;
+
+                                        @include pt-2;
+                                        @include pb-1;
+                                        @include px-3;
+
+                                        @include small;
+
+                                        @include text-transform-uppercase;
+
+                                        font-weight             : var(--font-weight-semibold);
+
+                                        line-height             : 1.5;
+
+                                        color                   : var(--color-black); 
+
+                                        background              : var(--color-white);
+
+                                        border                  : calc(1 / var(--vw) * var(--multiplier)) solid rgba($color-black, 0.25);
+                                        border-radius           : 50em;
+                                    }
+                                }
+                            }
+
                             .content-text {
-                                @include mb-5;
+                                @include mb-4;
 
                                 .title {
                                     .text-title {
+                                        font-size               : calc(30 / var(--vw) * var(--multiplier));
+
                                         color                   : var(--color-black);
                                     }
                                 }
 
                                 .price {
+                                    @include py-3;
                                     @include mb-4;
+
+                                    border-top                  : calc(1 / var(--vw) * var(--multiplier)) solid rgba($color-black, 0.25);
+                                    border-bottom               : calc(1 / var(--vw) * var(--multiplier)) solid rgba($color-black, 0.25);
                                 }
 
                                 .desc {
                                     .text-description {
+                                        @include mb-0;
+
                                         @include p;
 
                                         color                   : var(--color-black);
+                                    }
+                                }
+                            }
+
+                            .content-accordion {
+                                @include mb-4;
+
+                                .accordion {
+                                    @include text-align-left;
+
+                                    background              : transparent;
+                                    
+                                    .accordion-item {
+                                        @include mb-2;
+
+                                        background          : transparent;
+
+                                        border              : calc(1 / var(--vw) * var(--multiplier)) solid rgba($color-black, 0.25);
+                                        border-radius       : calc(5 / var(--vw) * var(--multiplier));
+
+                                        .accordion-header {
+                                            border-bottom   : none;
+
+                                            .header-link {
+                                                .link {
+                                                    .link-header {
+                                                        @include display-flex;
+
+                                                        @include align-items-center;
+
+                                                        @include py-3;
+                                                        @include px-4;
+
+                                                        @include p;
+
+                                                        @include text-transform-uppercase;
+                                                        @include text-decoration-none;
+
+                                                        justify-content         : space-between;
+
+                                                        cursor                  : pointer;
+
+                                                        font-weight             : var(--font-weight-semibold);
+
+                                                        color                   : var(--color-black);
+
+                                                        border-radius           : 0em; 
+
+                                                        > span {
+                                                            &.icon {
+                                                                @include display-inline-block;
+
+                                                                transform       : rotate(180deg);
+
+                                                                transition      : 0.75s var(--cubic-bezier-1);
+                                                            }
+                                                        }
+
+                                                        &.collapsed {
+                                                            > span {
+                                                                &.icon {
+                                                                    transform   : rotate(0deg);
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+
+                                        .accordion-body {
+                                            @include p-4;
+
+                                            border-top                          : calc(1 / var(--vw) * var(--multiplier)) solid rgba($color-black, 0.25);
+
+                                            .body-text {
+                                                .desc {
+                                                    .text-description {
+                                                        @include mb-0;
+
+                                                        color                   : var(--color-black);
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+
+                            .content-button {
+                                .button {
+                                    .btn-content {
+                                        @include display-block;
+
+                                        @include width-100;
                                     }
                                 }
                             }

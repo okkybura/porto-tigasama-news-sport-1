@@ -68,7 +68,7 @@
     --font-weight-link                                          : 500;
     --font-weight-button                                        : 700;
     --font-weight-textprice                                     : 900;
-    --font-weight-sellprice                                     : 900;
+    --font-weight-sellprice                                     : 600;
 
     --font-weight-thin                                          : 100;
     --font-weight-extralight                                    : 200;
@@ -85,7 +85,7 @@
     // Font - Size
 
     --font-size-general                                         : 16;
-    --font-size-title                                           : 55;
+    --font-size-title                                           : 50;
     --font-size-subtitle                                        : 16;
     --font-size-description                                     : 14;
     --font-size-date                                            : 16;
@@ -96,7 +96,7 @@
     --font-size-button                                          : 14;
     --font-size-icon                                            : 12;
     --font-size-textprice                                       : 20;
-    --font-size-sellprice                                       : 45;
+    --font-size-sellprice                                       : 30;
 
     --font-size-display1                                        : 60;
     --font-size-display2                                        : 60;
@@ -115,7 +115,7 @@
     // Letter Spacing
 
     --letter-spacing-title                                      : 0.5;
-    --letter-spacing-description                                : 1;
+    --letter-spacing-description                                : 0.5;
 
     // Button
 
@@ -887,7 +887,7 @@ i {
 
         line-height             : 1.25;
 
-        letter-spacing          : calc(-1.5 / var(--vw) * var(--multiplier));
+        letter-spacing          : calc(-0.5 / var(--vw) * var(--multiplier));
 
         color                   : var(--color-black);
 
@@ -1302,8 +1302,8 @@ i {
 
                 @include width-100;
 
-                @include py-3;
-                @include px-5;
+                @include p-1;
+                @include pl-4;
 
                 justify-content         : space-between;
 
@@ -1319,16 +1319,6 @@ i {
                 }
 
                 span {
-                    &.icon {
-                        @include mx-0;
-                        
-                        svg {
-                            fill                : var(--color-white);
-
-                            mix-blend-mode      : difference;
-                        }
-                    }
-
                     &.text, &.time {
                         > span {
                             &:nth-child(1) {
@@ -1337,6 +1327,58 @@ i {
 
                             &:nth-child(2) {
                                 color           : var(--color-white);
+                            }
+                        }
+                    }
+
+                    &.icon {
+                        @include display-inline-flex;
+
+                        @include align-items-center;
+
+                        justify-content         : center;
+
+                        width                   : calc(40 / var(--vw) * var(--multiplier));
+                        height                  : calc(40 / var(--vw) * var(--multiplier));
+
+                        background              : var(--color-white);
+
+                        border-radius           : 100%;
+
+                        > span {
+                            @include position-relative;
+
+                            @include display-inline-block;
+
+                            @include overflow-hidden;
+
+                            > i {
+                                &:last-child {
+                                    @include position-absolute;
+
+                                    top             : 50%;
+                                    left            : -110%;
+
+                                    transform       : translateY(-50%);
+                                }
+                            }                            
+                        }
+                    }
+                }
+            }
+
+            &:hover {
+                span {
+                    &.icon {
+                        > span {
+                            > i {
+                                &:first-child {
+                                    transform       : translateX(110%);
+                                }
+                                
+                                &:last-child {
+                                    left            : 0;
+                                }
                             }
                         }
                     }
