@@ -1226,9 +1226,9 @@
                 scrollTrigger: {
                     trigger: ".service-list.primary",
                     start: "top bottom",
-                    end: "+=4000px top",
+                    end: "bottom top",
                     scrub: true,
-                    markers: false,
+                    markers: true,
                     invalidateOnRefresh: true,
                 }
             });
@@ -1252,7 +1252,7 @@
                         invalidateOnRefresh: true
                     },
                     ease: "none",
-                    scale: () => 1 - (cards.length - index) * 0.025,
+                    scale: () => 1 - (cards.length - index) * 0.05,
                 });
 
                 ScrollTrigger.create({
@@ -1358,12 +1358,12 @@
                     start: "top bottom",
                     end: "bottom+=75% bottom",
                     scrub: true,
-                    markers: true,
+                    markers: false,
                     invalidateOnRefresh: true,
                 },
                 opacity: 1,
-                width: 2000,
-                height: 2000,
+                width: 3000,
+                height: 3000,
                 stagger: 0.1, 
             });
         });

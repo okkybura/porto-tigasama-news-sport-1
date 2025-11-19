@@ -12207,7 +12207,7 @@ body .content.page-load-progress {
 .wizard .theme.service-list.primary .service-list-footer {
   position: relative;
   text-align: center;
-  height: 200vh;
+  height: 150vh;
 }
 .wizard .theme.service-list.primary .service-list-footer .footer-wrapper.primary {
   position: relative;
