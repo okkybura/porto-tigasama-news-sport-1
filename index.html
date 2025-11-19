@@ -56,39 +56,37 @@
                             </span>
                         </span>
                     </a>
+                    <a class="navbar-hamburger" href="">
+                        <span class="hamburger-icon">
+                            <span class="bar"></span>
+                            <span class="bar"></span>
+                            <span class="bar"></span>
+                        </span>
+                    </a>
                     <ul class="navbar-nav primary">
                         <li class="nav-item">
                             <a class="nav-link link-default primary" href="#">
                                 <span class="wrapper">
                                     <span class="text">
+                                        Boat
+                                    </span>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link link-default primary" href="#">
+                                <span class="wrapper">
+                                    <span class="text">
+                                        Trip
+                                    </span>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link link-default primary" href="#">
+                                <span class="wrapper">
+                                    <span class="text">
                                         Package
-                                    </span>
-                                </span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link link-default primary" href="#">
-                                <span class="wrapper">
-                                    <span class="text">
-                                        Dining
-                                    </span>
-                                </span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link link-default primary" href="#">
-                                <span class="wrapper">
-                                    <span class="text">
-                                        Relax
-                                    </span>
-                                </span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link link-default primary" href="#">
-                                <span class="wrapper">
-                                    <span class="text">
-                                        Discover
                                     </span>
                                 </span>
                             </a>
@@ -761,6 +759,39 @@
                                             </div>
                                         </div>
                                     </div>
+
+                                    <!-- Footer Section -->
+
+                                    <div class="service-list-footer">
+                                        <div class="container">
+                                            <div class="footer-wrapper primary">
+                                                <div class="footer-pulse">
+                                                    <div class="pulse">
+                                                        <span></span>
+                                                        <span></span>
+                                                        <span></span>
+                                                    </div>
+                                                </div>
+                                                <div class="footer-text">
+                                                    <div class="subtitle">
+                                                        <h4 class="text-subtitle">
+                                                            Travelers with Our Tours
+                                                        </h4>
+                                                    </div>
+                                                    <div class="number">
+                                                        <span id="number">
+                                                            
+                                                        </span>
+                                                    </div>
+                                                    <div class="caption">
+                                                        <span>
+                                                            enjoying unforgettable experiences and top-notch service.
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </section>
                             </div>
                         </div>
@@ -1206,35 +1237,136 @@
 
     <script>
         $(document).ready(function () {
-
             const cards = document.querySelectorAll(".card-stack");
+            const lastCard = cards[cards.length - 1];
 
             cards.forEach((card, index) => {
+
                 const tween = gsap.to(card, {
                     scrollTrigger: {
                         trigger: card,
-                        start: () => 'top bottom-=50',
+                        start: () => 'top bottom',
                         end: () => `top top`,
                         scrub: true,
                         markers: false,
                         invalidateOnRefresh: true
                     },
                     ease: "none",
-                    scale: () => 1 - (cards.length - index) * 0.05
+                    scale: () => 1 - (cards.length - index) * 0.025,
                 });
 
                 ScrollTrigger.create({
                     trigger: card,
                     start: "-21.5% top",
+                    endTrigger: lastCard,
+                    end: "bottom 90%",
                     pin: true,
                     pinSpacing: false,
                     markers: false,
-                    id: 'pin',
-                    end: () => `+=${cards.length * 100}%`,
-                    invalidateOnRefresh: true,
+                    invalidateOnRefresh: true
                 });
-            }); 
-        }); 
+
+            });
+        });
+
+        // $(document).ready(function () {
+
+        //     const cards = document.querySelectorAll(".card-stack");
+
+        //     cards.forEach((card, index) => {
+
+        //         gsap.set(card, {
+        //             rotateX: -45,
+        //             z: index * -1,
+        //             scale: 0.75 + index * 0.025,   // staggered scale for depth
+        //             transformOrigin: "bottom center",
+        //             transformStyle: "preserve-3d",
+        //         });
+
+        //         // Flip animation
+        //         gsap.to(card, {
+        //             rotateX: 0,
+        //             scale: 1,
+        //             ease: "power1.out",
+                    
+        //             scrollTrigger: {
+        //                 trigger: card,
+        //                 start: "top bottom-=50",
+        //                 end: "top top",
+        //                 scrub: true,
+        //                 markers: false,
+        //             }
+        //         });
+
+        //         // Pin each card so stacking works
+        //         ScrollTrigger.create({
+        //             trigger: card,
+        //             start: "center center+=22.5%",
+        //             pin: true,
+        //             pinSpacing: false,
+        //             markers: true,
+        //             end: () => "+=" + (cards.length * 100) + "%",
+        //             onUpdate: self => {
+        //                 cards.forEach(c => c.style.zIndex = 0);  // reset
+        //                 card.style.zIndex = 100;                 // active card on top
+        //             }
+        //         });
+        //     });
+        // });
+
+    </script>
+
+    <script>
+        $(document).ready(function () {
+
+            ScrollTrigger.create({
+                trigger: ".service-list-footer",
+                pin: true,
+                pinSpacing: false,
+                start: "top center-=30%",
+                end: () => document.body.scrollHeight,
+                scrub: true,
+                markers: false,
+                id: 'pin',
+                invalidateOnRefresh: true,
+            });
+
+            const number = document.querySelector('#number');
+            const pulse = document.querySelectorAll('.footer-pulse .pulse span');
+            const startCount = 0;
+            const num = { var: startCount };
+
+            gsap.to(num, {
+                scrollTrigger: {
+                    trigger: ".service-list-footer",
+                    start: "top bottom",
+                    end: "bottom bottom",
+                    scrub: true,
+                    markers: false,
+                    invalidateOnRefresh: true
+                },
+                var: 1250,
+                ease: "none",
+                onUpdate: () => {
+                    number.innerHTML = num.var.toFixed() + "+";
+                }
+            });
+
+            gsap.to(pulse, {
+                scrollTrigger: {
+                    trigger: ".service-list-footer",
+                    start: "top bottom",
+                    end: "bottom+=75% bottom",
+                    scrub: true,
+                    markers: true,
+                    invalidateOnRefresh: true,
+                },
+                opacity: 1,
+                width: 2000,
+                height: 2000,
+                stagger: 0.1, 
+            });
+        });
     </script>
 </body>
 </html>
