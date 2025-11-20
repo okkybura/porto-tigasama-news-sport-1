@@ -65,8 +65,8 @@
     --font-weight-caption                                       : 900;
     --font-weight-number                                        : 400;
     --font-weight-tag                                           : 900;
-    --font-weight-link                                          : 500;
-    --font-weight-button                                        : 700;
+    --font-weight-link                                          : 600;
+    --font-weight-button                                        : 600;
     --font-weight-textprice                                     : 900;
     --font-weight-sellprice                                     : 600;
 
@@ -1392,8 +1392,9 @@ i {
         // Primary
 
         &.primary {
-            font-weight                     : var(--font-weight-regular);
             font-size                       : calc(13 / var(--vw) * var(--multiplier));
+
+            color                           : var(--color-white);
 
             > span {
                 @include py-1;
@@ -1409,21 +1410,8 @@ i {
                         fill                : var(--color-white);
                     }
                 }
-
-                &.text, &.time {
-                    > span {
-                        &:nth-child(1) {
-                            color           : var(--color-white);
-                        }
-
-                        &:nth-child(2) {
-                            color           : var(--color-white);
-                        }
-                    }
-                }
             }
         }
-
     }
 }
 
@@ -1536,24 +1524,12 @@ i {
     // Primary
 
     &.primary {
+        color                               : var(--color-white);
+
         > span {
             &.wrapper {
                 &:before, &:after {
                     background              : var(--color-white);
-                }
-
-                > span {
-                    &.text {
-                        > span {
-                            &:nth-child(1) {
-                                color               : rgba($color-white, 1);
-                            }
-
-                            &:nth-child(2) {
-                                color               : rgba($color-white, 1);
-                            }
-                        }
-                    }
                 }
             }
         }
