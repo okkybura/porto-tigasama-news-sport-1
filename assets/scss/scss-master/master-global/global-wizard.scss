@@ -109,7 +109,17 @@
 body {
     .content {
         &.page-load {
+            @include width-100;
+            @include height-100;
 
+            background          : var(--color-white);
+
+            #smooth-wrapper {
+                clip-path       : polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+
+                transition      : 2s var(--cubic-bezier-1);
+            }
+            
             // Loader
 
             .loader {
@@ -143,9 +153,11 @@ body {
                     .logo-text {
                         @include position-relative;
 
-                        @include display-inline-block;
+                        @include display-flex;
+                        
+                        @include align-items-center;
 
-                        @include overflow-hidden;
+                        justify-content             : center;
 
                         line-height                 : 0.90;
 
@@ -154,57 +166,129 @@ body {
                         transition                  : 4s var(--cubic-bezier-2);
 
                         > span {
-                            @include display-block;
+                            @include position-absolute;
 
-                            @include font-primary;
+                            @include display-inline-block;
 
-                            @include text-transform-uppercase;
+                            top                     : 50%;
+                            left                    : 50%;
 
-                            font-weight             : var(--font-weight-semibold);
-                            font-size               : calc(40 / var(--vw) * var(--multiplier));
-
-                            color                   : var(--color-white);
+                            transform               : translate(-50%, -50%);
 
                             transition              : 2s var(--cubic-bezier-2);
-
+                            
                             * {
                                 transition          : 2s var(--cubic-bezier-2);
                             }
+                            
+                            &.text {
+                                @include font-primary;
 
-                            > span {
-                                @include display-flex;
+                                @include text-transform-uppercase;
 
-                                @include align-items-center;
+                                font-weight             : var(--font-weight-semibold);
+                                font-size               : calc(30 / var(--vw) * var(--multiplier));
+
+                                color                   : var(--color-white);
 
                                 > span {
-                                    @include display-inline-block;
+                                    @include display-flex;
 
-                                    white-space                 : pre;
+                                    @include align-items-center;
 
-                                    &:nth-child(3) {
-                                        margin-right            : calc(-3.5 / var(--vw) * var(--multiplier));
+                                    @include overflow-hidden;
+
+                                    > span {
+                                        @include display-inline-block;
+
+                                        white-space                 : pre;
+
+                                        @for $i from 1 through 10 {
+                                            &:nth-child(#{$i}) {
+                                                transition-delay    : #{($i - 1) * 0.1}s;
+                                            }
+                                        }
                                     }
+                                }
 
-                                    @for $i from 1 through 10 {
-                                        &:nth-child(#{$i}) {
-                                            transition-delay    : #{($i - 1) * 0.1}s;
+                                &:first-child {
+                                    left                    : calc(50% - calc(55 / var(--vw) * var(--multiplier)));
+
+                                    > span {
+                                        > span {
+                                            transform       : translateY(110%);
+                                        }
+                                    }
+                                }
+
+                                &:last-child {
+                                    left                    : calc(50% + calc(50 / var(--vw) * var(--multiplier)));
+
+                                    > span {
+                                        > span {
+                                            transform       : translateY(-110%);
+                                        }
+                                    }   
+                                }
+                            }
+
+                            &.icon {
+                                top                         : calc(50% - calc(3.5 / var(--vw) * var(--multiplier)));
+
+                                transform                   : translate(-50%, -50%) scale(0);
+
+                                svg {
+                                    animation               : animationLoopSpin 6.5s var(--cubic-bezier-2) infinite;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Navbar
+
+            .navbar {
+
+                // Primary
+
+                &.primary {
+                    .navbar-wrapper {
+
+                        // Primary
+
+                        &.primary {
+                            &:after {
+                                width                       : 0 !important;
+
+                                transition                  : 2s var(--cubic-bezier-1);
+                            }
+
+                            .navbar-brand {
+                                * {
+                                    transition              : 2s var(--cubic-bezier-2);
+                                }
+
+                                > span {
+                                    &.text {
+                                        @include display-inline-block;
+
+                                        @include overflow-hidden;
+
+                                        > span {
+                                            @include display-inline-block;
+
+                                            transform       : translateY(-100%);
                                         }
                                     }
                                 }
                             }
 
-                            &:last-child {
-                                @include position-absolute;
+                            .navbar-nav {
+                                .nav-item {
+                                    transition              : 2s var(--cubic-bezier-2);
 
-                                top                     : 50%;
-                                left                    : 50%;
-                                
-                                transform               : translate(-50%, -50%);
-
-                                > span {
-                                    > span {
-                                        transform       : translateY(110%);
-                                    }
+                                    transform               : translateY(-100%);
                                 }
                             }
                         }
@@ -231,7 +315,7 @@ body {
                                 .carousel-cell {
                                     .carousel-image {
                                         .image {
-                                            transform           : translateY(calc(300 / var(--vw) * var(--multiplier))) scale(1.25);
+                                            transform           : translateY(calc(300 / var(--vw) * var(--multiplier))) scale(1.35);
 
                                             transition          : 3s var(--cubic-bezier-1);
                                         }
@@ -265,19 +349,46 @@ body {
                                                         > span {
                                                             @include display-inline-block;
 
-                                                            @for $i from 1 through 20 {
+                                                            transform           : translateY(105%);
 
-                                                                &:nth-child(#{$i}) {
-                                                                    transform           : translateY(105%);
-
-                                                                    transition          : 2s var(--cubic-bezier-2);
-                                                                }
-                                                            }
+                                                            transition          : 2s var(--cubic-bezier-2);
                                                         }
                                                     }
                                                 }
                                             }
                                         }
+                                    }
+
+                                    .subtitle {
+                                        .text-subtitle {
+                                            .line-mask {
+                                                .line {
+                                                    transform                   : translateY(105%);
+
+                                                    transition                  : 2s var(--cubic-bezier-2);
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+
+                                .header-caption {
+                                    .caption {
+                                        .line-mask {
+                                            .line {
+                                                transform                       : translateY(105%);
+
+                                                transition                      : 2s var(--cubic-bezier-2);
+                                            }
+                                        }   
+                                    }
+                                }
+
+                                .header-button {
+                                    .button {
+                                        transform                               : translateY(calc(150 / var(--vw) * var(--multiplier)));
+
+                                        transition                              : 2s var(--cubic-bezier-2);
                                     }
                                 }
                             }
@@ -288,39 +399,37 @@ body {
         }
 
         &.page-load-start-1 {
-        
+
+            #smooth-wrapper {
+                clip-path               : polygon(2.5% 5%, 97.5% 5%, 97.5% 95%, 2.5% 95%);
+
+                transition-delay        : 0.25s;
+            }
+
             // Loader
 
             .loader {
                 .loader-logo {
                     .logo-text {
-                        transform                   : scale(1);
+                        transform                       : scale(1);
 
                         > span {
-                            > span {
+                            &.text {
                                 > span {
-                                    @for $i from 1 through 10 {
-                                        &:nth-child(#{$i}) {
-                                            transition-delay    : #{($i - 1) * 0.075}s;
+                                    > span {
+                                        transform                   : translateY(0) !important;
+
+                                        @for $i from 1 through 10 {
+                                            &:nth-child(#{$i}) {
+                                                transition-delay    : #{($i - 1) * 0.075 + 0.75s}s;
+                                            }
                                         }
                                     }
                                 }
                             }
-                            
-                            &:first-child {
-                                > span {
-                                    > span {
-                                        transform               : translateY(-110%);
-                                    }
-                                }
-                            }
 
-                            &:last-child {
-                                > span {
-                                    > span {
-                                        transform               : translateY(0);
-                                    }
-                                }
+                            &.icon {
+                                transform               : translate(-50%, -50%) scale(1);
                             }
                         }
                     }
@@ -329,6 +438,43 @@ body {
         }
 
         &.page-load-start-2 {
+
+            #smooth-wrapper {
+                clip-path               : polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+
+                transition-delay        : 1s;
+            }
+        
+            // Loader
+
+            .loader {
+                .loader-logo {
+                    .logo-text {
+                        > span {
+                            &.text {
+                                &:first-child {
+                                    > span {
+                                        transform           : translateX(calc(24.5 / var(--vw) * var(--multiplier)));
+                                    }
+                                }
+
+                                &:last-child {
+                                    > span {
+                                        transform           : translateX(calc(-24.5 / var(--vw) * var(--multiplier)));
+                                    }
+                                }
+                            }
+
+                            &.icon {
+                                transform                   : translate(-50%, -50%) scale(0);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        &.page-load-start-3 {
 
             // Loader
 
@@ -377,7 +523,7 @@ body {
                                     .title {
                                         .text-title {
                                             .line {
-                                                transition-delay    : 2s;
+                                                transition-delay    : 2.10s;
 
                                                 &:first-child {
                                                     transform       : translateX(0);
@@ -414,13 +560,118 @@ body {
 
         &.page-load-complete {
 
+            // Loader
+
+            .loader {
+                clip-path           : polygon(0 0, 100% 0, 100% 0, 0 0);
+            }
+
+            // Navbar
+
+            .navbar {
+
+                // Primary
+
+                &.primary {
+                    .navbar-wrapper {
+
+                        // Primary
+
+                        &.primary {
+                            &:after {
+                                @include width-100;
+
+                                transition-delay                : 1.65s;
+                            }
+
+                            .navbar-brand {
+                                > span {
+                                    &.text {
+                                        > span {
+                                            transform           : translateY(0);
+
+                                            transition-delay    : 1.35s; 
+                                        }
+                                    }
+                                }
+                            }
+
+                            .navbar-nav {
+                                .nav-item {
+                                    transform                   : translateY(0);
+
+                                    transition-delay            : 1.35s; 
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Wizard
+
+            .wizard {
+
+                // Theme
+
+                .theme {
+
+                    // Hero
+
+                    &.hero {
+
+                        // Primary
+
+                        &.primary {
+
+                            // Header
+
+                            .hero-header {
+                                .header-text {
+                                    .subtitle {
+                                        .text-subtitle {
+                                            .line-mask {
+                                                @for $i from 1 through 10 {
+                                                    &:nth-child(#{$i}) {
+                                                        .line {
+                                                            transform           : translateY(0);
+
+                                                            transition-delay    : #{($i - 1) * 0.05 + 1.30}s;
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+
+                                .header-caption {
+                                    .caption {
+                                        .line-mask {
+                                            .line {
+                                                transform           : translateY(0);
+
+                                                transition-delay    : 1.25s;
+                                            }   
+                                        }
+                                    }
+                                }
+
+                                .header-button {
+                                    .button {
+                                        transform                   : translateY(0);
+
+                                        transition-delay            : 1.35s;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }
-
-// #smooth-wrapper {
-//     clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
-// }
 
 // Page
 
@@ -450,6 +701,8 @@ body {
         z-index                     : 1040;     
 
         top                         : 0;
+
+        transition                  : 1.5s var(--cubic-bezier-1);
 
         // &.active {
         //     .navbar-wrapper {
@@ -530,14 +783,31 @@ body {
 
                 padding                 : calc(30 / var(--vw) * var(--multiplier)) 0;
 
-                border-bottom           : calc(1 / var(--vw) * var(--multiplier)) solid rgba($color-white, 0.25);
-
                 transition              : 0.75s var(--cubic-bezier-3);
+
+                &:after {
+                    @include position-absolute;
+
+                    @include width-100;
+
+                    content             : '';
+
+                    height              : calc(1 / var(--vw) * var(--multiplier));
+
+                    bottom              : 0;
+                    left                : 50%;
+
+                    transform           : translateX(-50%);
+
+                    background          : rgba($color-white, 0.25);
+                }
 
                 .wrapper-inner {
                     @include display-flex;
 
                     @include align-items-center;
+
+                    @include overflow-hidden;
 
                     @include width-100;
                 }
@@ -547,12 +817,16 @@ body {
 
                     @include text-align-center;
 
+                    @include p-0;
+
                     @include font-primary;
                     @include h4;
 
                     @include text-transform-uppercase;
 
                     font-weight             : var(--font-weight-semibold);
+
+                    line-height             : 1;
 
                     color                   : var(--color-white);
 
@@ -810,7 +1084,7 @@ body {
 
                             height          : calc(100vh - calc(103.5 / var(--vw) * var(--multiplier)));
 
-                            padding         : calc(125 / var(--vw) * var(--multiplier)) 0 calc(30 / var(--vw) * var(--multiplier)) 0;
+                            padding         : calc(135 / var(--vw) * var(--multiplier)) 0 calc(30 / var(--vw) * var(--multiplier)) 0;
 
                             bottom          : 0;
                             left            : 50%;
@@ -960,7 +1234,7 @@ body {
 
                                 color               : var(--color-white);
 
-                                > span {
+                                span {
                                     &.text {
                                         @include mr-3;
                                     }
