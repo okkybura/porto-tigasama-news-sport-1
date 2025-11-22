@@ -108,6 +108,9 @@
 
 body {
     .content {
+
+        // Page Loader
+
         &.page-load {
             @include width-100;
             @include height-100;
@@ -117,7 +120,7 @@ body {
             #smooth-wrapper {
                 clip-path       : polygon(0 0, 100% 0, 100% 100%, 0% 100%);
 
-                transition      : 2s var(--cubic-bezier-1);
+                transition      : 2s var(--cubic-bezier-2);
             }
             
             // Loader
@@ -145,8 +148,135 @@ body {
 
                 transition          : 1.5s var(--cubic-bezier-2);
 
+                .loader-loading {
+                    * {
+                        transition          : 2s var(--cubic-bezier-2);
+                    }
+
+                    .loading-caption {
+                        .caption {
+                            > span {
+                                @include position-fixed;
+
+                                @include display-inline-block;
+
+                                @include overflow-hidden;
+
+                                @include font-primary;
+                                @include p;
+
+                                left            : 50%;
+
+                                transform       : translateX(-50%);
+
+                                &.text {
+                                    top         : calc(35 / var(--vw) * var(--multiplier));
+                                }
+
+                                &.number {
+                                    bottom      : calc(35 / var(--vw) * var(--multiplier));
+                                }
+
+                                > span {
+                                    @include display-inline-block;
+
+                                    @include font-primary;
+                                    @include p;
+
+                                    @include text-transform-uppercase;
+
+                                    font-weight         : var(--font-weight-semibold);
+
+                                    letter-spacing      : normal;
+
+                                    transition          : 2s var(--cubic-bezier-2);
+                                }
+                            }
+                        }
+                    }
+
+                    .loading-image {
+                        .image-wrapper {
+
+                            // Primary
+
+                            &.primary {
+                                width                   : calc(300 / var(--vw) * var(--multiplier));
+                                height                  : calc(300 / var(--vw) * var(--multiplier));
+
+                                clip-path               : polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+
+                                transition              : 3s var(--cubic-bezier-1);
+
+                                > .wrapper-outer {
+                                    @include position-fixed;
+
+                                    @include overflow-hidden;
+
+                                    width               : calc(300 / var(--vw) * var(--multiplier));
+                                    height              : calc(300 / var(--vw) * var(--multiplier));
+
+                                    top                 : 50%;
+                                    left                : 50%;
+
+                                    transform           : translate(-50%, -50%);
+
+                                    transition          : 5s ease-in;
+
+                                    &.saturate {
+                                        z-index         : 20;
+                                        
+                                        clip-path       : polygon(0 100%, 100% 100%, 100% 100%, 0% 100%);
+                                    }
+
+                                    &.desaturate {
+                                        z-index         : 10;
+
+                                        .image {
+                                            filter      : grayscale(1);
+                                        }
+                                    }
+                                }
+
+                                .image {
+                                    @include position-fixed;
+
+                                    width               : calc(300 / var(--vw) * var(--multiplier));
+                                    height              : calc(300 / var(--vw) * var(--multiplier));
+
+                                    top                 : 50%;
+                                    left                : 50%;
+
+                                    transform           : translate(-50%, -50%) scale(1.25);
+
+                                    transition          : 6.5s var(--cubic-bezier-2);
+
+                                    img {
+                                        opacity         : 0;
+
+                                        transition      : transform 5s var(--cubic-bezier-5), opacity 0s;
+                                    }
+
+                                    &:nth-child(1) {
+                                        img {
+                                            opacity         : 1;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
                 .loader-logo {
+                    @include position-fixed;
+
                     @include text-align-center;
+
+                    top             : 50%;
+                    left            : 50%;
+
+                    transform       : translate(-50%, -50%);
 
                     transition      : 2s var(--cubic-bezier-2);
 
@@ -400,11 +530,195 @@ body {
 
         &.page-load-start-1 {
 
+            &.page-load-progress-1 {
+
+                // Loader
+
+                .loader {
+                    .loader-loading {
+                        .loading-image {
+                            .image-wrapper {
+
+                                // Primary
+
+                                &.primary {
+                                    .image {
+                                        &:nth-child(2) {
+                                            img {
+                                                opacity         : 1;
+                                                
+                                                transform       : scale(1);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            &.page-load-progress-2 {
+
+                // Loader
+
+                .loader {
+                    .loader-loading {
+                        .loading-image {
+                            .image-wrapper {
+
+                                // Primary
+
+                                &.primary {
+                                    .image {
+                                        &:nth-child(3) {
+                                            img {
+                                                opacity         : 1;
+
+                                                transform       : scale(1);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            &.page-load-progress-3 {
+
+                // Loader
+
+                .loader {
+                    .loader-loading {
+                        .loading-image {
+                            .image-wrapper {
+
+                                // Primary
+
+                                &.primary {
+                                    .image {
+                                        &:nth-child(4) {
+                                            img {
+                                                opacity         : 1;
+
+                                                transform       : scale(1);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            &.page-load-progress-4 {
+
+                // Loader
+
+                .loader {
+                    .loader-loading {
+                        .loading-image {
+                            .image-wrapper {
+
+                                // Primary
+
+                                &.primary {
+                                    .image {
+                                        &:nth-child(5) {
+                                            img {
+                                                opacity         : 1;
+
+                                                transform       : scale(1);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Loader
+
+            .loader {
+                .loader-loading {
+                    .loading-image {
+                        .image-wrapper {
+
+                            // Primary
+
+                            &.primary {
+                                > .wrapper-outer {
+                                    &.saturate {
+                                        clip-path       : polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+                                    }
+                                }
+
+                                .image {
+                                    transform           : translate(-50%, -50%) scale(1);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        &.page-load-start-2 {
+
             #smooth-wrapper {
                 clip-path               : polygon(2.5% 5%, 97.5% 5%, 97.5% 95%, 2.5% 95%);
-
-                transition-delay        : 0.25s;
             }
+
+            // Loader
+
+            .loader {
+                .loader-loading {
+                    .loading-caption {
+                        .caption {
+                            > span {
+                                &.text {
+                                    > span {
+                                        transform           : translateY(-150%);
+                                    }
+                                }
+
+                                &.number {
+                                    > span {
+                                        transform           : translateY(150%);
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .loading-image {
+                        .image-wrapper {
+
+                            // Primary
+
+                            &.primary {
+                               clip-path                : polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%);
+
+                               transform                : scale(0.35);
+     
+                                .image {
+                                    transform           : translate(-50%, -50%) scale(1.25);
+
+                                    transition          : 3s var(--cubic-bezier-2);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }    
+
+        &.page-load-start-3 {
 
             // Loader
 
@@ -437,12 +751,10 @@ body {
             }
         }
 
-        &.page-load-start-2 {
+        &.page-load-start-4 {
 
             #smooth-wrapper {
                 clip-path               : polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-
-                transition-delay        : 1s;
             }
         
             // Loader
@@ -474,7 +786,7 @@ body {
             }
         }
 
-        &.page-load-start-3 {
+        &.page-load-start-5 {
 
             // Loader
 
@@ -590,7 +902,7 @@ body {
                                         > span {
                                             transform           : translateY(0);
 
-                                            transition-delay    : 1.35s; 
+                                            transition-delay    : 1.65s; 
                                         }
                                     }
                                 }
@@ -600,7 +912,7 @@ body {
                                 .nav-item {
                                     transform                   : translateY(0);
 
-                                    transition-delay            : 1.35s; 
+                                    transition-delay            : 1.65s; 
                                 }
                             }
                         }
@@ -636,7 +948,7 @@ body {
                                                         .line {
                                                             transform           : translateY(0);
 
-                                                            transition-delay    : #{($i - 1) * 0.05 + 1.30}s;
+                                                            transition-delay    : #{($i - 1) * 0.05 + 1.65}s;
                                                         }
                                                     }
                                                 }
@@ -651,7 +963,7 @@ body {
                                             .line {
                                                 transform           : translateY(0);
 
-                                                transition-delay    : 1.25s;
+                                                transition-delay    : 1.65s;
                                             }   
                                         }
                                     }
@@ -661,7 +973,7 @@ body {
                                     .button {
                                         transform                   : translateY(0);
 
-                                        transition-delay            : 1.35s;
+                                        transition-delay            : 1.65s;
                                     }
                                 }
                             }

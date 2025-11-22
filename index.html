@@ -162,6 +162,60 @@
             <!-- Loader -->
 
             <div class="loader">
+                <div class="loader-loading">
+                    <div class="loading-caption">
+                        <div class="caption">
+                            <span class="text">
+                                <span>
+                                    Loading
+                                </span>
+                            </span>
+                            <span class="number">
+                                <span id="loadingNumber">
+                                    0%
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="loading-image">
+                        <div class="image-wrapper primary">
+                            <div class="wrapper-outer saturate">
+                                <div class="image">
+                                    <img src="/assets/images/root/service-list-primary-content-image-1.jpg" />
+                                </div>
+                                <div class="image">
+                                    <img src="/assets/images/root/service-list-primary-content-image-2.jpg" />
+                                </div>
+                                <div class="image">
+                                    <img src="/assets/images/root/service-list-primary-content-image-3.jpg" />
+                                </div>
+                                <div class="image">
+                                    <img src="/assets/images/root/service-list-primary-content-image-1.jpg" />
+                                </div>
+                                <div class="image">
+                                    <img src="/assets/images/root/service-list-primary-content-image-2.jpg" />
+                                </div>
+                            </div>
+                            <div class="wrapper-outer desaturate">
+                                <div class="image">
+                                    <img src="/assets/images/root/service-list-primary-content-image-1.jpg" />
+                                </div>    
+                                <div class="image">
+                                    <img src="/assets/images/root/service-list-primary-content-image-2.jpg" />
+                                </div>    
+                                <div class="image">
+                                    <img src="/assets/images/root/service-list-primary-content-image-3.jpg" />
+                                </div>   
+                                <div class="image">
+                                    <img src="/assets/images/root/service-list-primary-content-image-1.jpg" />
+                                </div>
+                                <div class="image">
+                                    <img src="/assets/images/root/service-list-primary-content-image-2.jpg" />
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="loader-logo">
                     <div class="logo-text">
                         <span class="text split-char">
@@ -947,7 +1001,7 @@
 
         // Page Transition
 
-        $(document).ready(function () {
+        $(window).on('load', function () {
             gsap.fromTo("body",
                 { opacity: 0 },
                 { opacity: 1, duration: 0.75, ease: "cubic-bezier(0.625, 0.05, 0, 1)" }
@@ -970,19 +1024,61 @@
 
         // Page Loader
 
-        $(document).ready(function () {
+        $(window).on('load', function () {
             setTimeout(function () {
                 disableWheelScroll();
             }, 0);
+
+            // Start Loader - Loading //
+
             setTimeout(function () {
                 $('body .content').addClass('page-load-start-1');
+
+                // Loader - Loading
+
+                let loaderLoadingNumber = { value: 0 };
+
+                gsap.to(loaderLoadingNumber, {
+                    value: 100,
+                    duration: 5,
+                    ease: "power1.out",
+                    onUpdate: function () {
+                        $('#loadingNumber').text( Math.floor(loaderLoadingNumber.value) + '%' );
+                    },
+                });
             }, 1000);
             setTimeout(function () {
+                $('body .content').addClass('page-load-progress-1');
+            }, 2000);
+            setTimeout(function () {
+                $('body .content').addClass('page-load-progress-2');
+            }, 3000);
+            setTimeout(function () {
+                $('body .content').addClass('page-load-progress-3');
+            }, 4000);
+            setTimeout(function () {
+                $('body .content').addClass('page-load-progress-4');
+            }, 5000);
+            setTimeout(function () {
                 $('body .content').addClass('page-load-start-2');
-            }, 2500);
+            }, 6500);
+
+            // End Loader - Loading //
+
+            // Start Loader - Logo //
+
             setTimeout(function () {
                 $('body .content').addClass('page-load-start-3');
-            }, 3000);
+            }, 8000);
+            setTimeout(function () {
+                $('body .content').addClass('page-load-start-4');
+            }, 9500);
+            setTimeout(function () {
+                $('body .content').addClass('page-load-start-5');
+            }, 10500);
+
+            // End Loader - Logo //
+
             setTimeout(function () {
                 $('body .content').addClass('page-load-complete');
  
@@ -1029,10 +1125,10 @@
                         }
                     });
                 });
-            }, 4000);
+            }, 11000);
             setTimeout(function () {
                 enableWheelScroll();
-            }, 6500);
+            }, 13000);
         });
     </script>
 
@@ -1057,7 +1153,7 @@
 
     <script>
 
-        $(document).ready(function () {
+        $(window).on('load', function () {
 
             const container = document.querySelector(".information-list.primary.inside");
             const containerHeader = document.querySelector(".information-list.primary.outside .information-list-header .header-wrapper.primary");
@@ -1157,7 +1253,7 @@
     </script>
 
     <script>
-        $(document).ready(function () {
+        $(window).on('load', function () {
             const marquee = document.querySelector(".service-list.primary .service-list-header .header-marquee .marquee-text");
             const titles = marquee?.querySelectorAll(".title");
 
@@ -1260,7 +1356,7 @@
     </script>
 
     <script>
-        $(document).ready(function () {
+        $(window).on('load', function () {
             gsap.to(".header-mask", {
                 ease: "none",
                 scrollTrigger: {
@@ -1309,7 +1405,7 @@
     </script>
 
     <script>
-        $(document).ready(function () {
+        $(window).on('load', function () {
             const cards = document.querySelectorAll(".card-stack");
             const lastCard = cards[cards.length - 1];
 
@@ -1390,7 +1486,7 @@
     </script>
 
     <script>
-        $(document).ready(function () {
+        $(window).on('load', function () {
 
             ScrollTrigger.create({
                 trigger: ".service-list-footer",
