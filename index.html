@@ -1127,6 +1127,7 @@
                 });
             }, 11000);
             setTimeout(function () {
+                $('body .content').removeClass().addClass('content page-load page-load-complete');
                 enableWheelScroll();
             }, 13000);
         });

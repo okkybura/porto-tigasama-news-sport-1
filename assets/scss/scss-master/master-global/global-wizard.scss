@@ -935,11 +935,47 @@ body {
                         // Primary
 
                         &.primary {
+                            .section-carousel {
+                                .carousel-cell {
+                                    .carousel-image {
+                                        .image {
+                                            transform           : translateY(0) scale(1);
+                                        }
+                                    }
+                                }
+                            }
 
                             // Header
 
                             .hero-header {
                                 .header-text {
+                                    .title {
+                                        .text-title {
+                                            .line {
+                                                &:first-child {
+                                                    transform       : translateX(0);
+                                                }
+
+                                                &:last-child {
+                                                    transform       : translateX(0);
+                                                }
+
+                                                .text {
+                                                    > span {
+                                                        > span {
+                                                            @for $i from 1 through 20 {
+
+                                                                &:nth-child(#{$i}) {
+                                                                    transform               : translateY(0);
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+
                                     .subtitle {
                                         .text-subtitle {
                                             .line-mask {

@@ -12090,6 +12090,75 @@ body .content.page-load-complete .navbar.primary .navbar-wrapper.primary .navbar
   transform: translateY(0);
   transition-delay: 1.65s;
 }
+body .content.page-load-complete .wizard .theme.hero.primary .section-carousel .carousel-cell .carousel-image .image {
+  transform: translateY(0) scale(1);
+}
+body .content.page-load-complete .wizard .theme.hero.primary .hero-header .header-text .title .text-title .line:first-child {
+  transform: translateX(0);
+}
+body .content.page-load-complete .wizard .theme.hero.primary .hero-header .header-text .title .text-title .line:last-child {
+  transform: translateX(0);
+}
+body .content.page-load-complete .wizard .theme.hero.primary .hero-header .header-text .title .text-title .line .text > span > span:nth-child(1) {
+  transform: translateY(0);
+}
+body .content.page-load-complete .wizard .theme.hero.primary .hero-header .header-text .title .text-title .line .text > span > span:nth-child(2) {
+  transform: translateY(0);
+}
+body .content.page-load-complete .wizard .theme.hero.primary .hero-header .header-text .title .text-title .line .text > span > span:nth-child(3) {
+  transform: translateY(0);
+}
+body .content.page-load-complete .wizard .theme.hero.primary .hero-header .header-text .title .text-title .line .text > span > span:nth-child(4) {
+  transform: translateY(0);
+}
+body .content.page-load-complete .wizard .theme.hero.primary .hero-header .header-text .title .text-title .line .text > span > span:nth-child(5) {
+  transform: translateY(0);
+}
+body .content.page-load-complete .wizard .theme.hero.primary .hero-header .header-text .title .text-title .line .text > span > span:nth-child(6) {
+  transform: translateY(0);
+}
+body .content.page-load-complete .wizard .theme.hero.primary .hero-header .header-text .title .text-title .line .text > span > span:nth-child(7) {
+  transform: translateY(0);
+}
+body .content.page-load-complete .wizard .theme.hero.primary .hero-header .header-text .title .text-title .line .text > span > span:nth-child(8) {
+  transform: translateY(0);
+}
+body .content.page-load-complete .wizard .theme.hero.primary .hero-header .header-text .title .text-title .line .text > span > span:nth-child(9) {
+  transform: translateY(0);
+}
+body .content.page-load-complete .wizard .theme.hero.primary .hero-header .header-text .title .text-title .line .text > span > span:nth-child(10) {
+  transform: translateY(0);
+}
+body .content.page-load-complete .wizard .theme.hero.primary .hero-header .header-text .title .text-title .line .text > span > span:nth-child(11) {
+  transform: translateY(0);
+}
+body .content.page-load-complete .wizard .theme.hero.primary .hero-header .header-text .title .text-title .line .text > span > span:nth-child(12) {
+  transform: translateY(0);
+}
+body .content.page-load-complete .wizard .theme.hero.primary .hero-header .header-text .title .text-title .line .text > span > span:nth-child(13) {
+  transform: translateY(0);
+}
+body .content.page-load-complete .wizard .theme.hero.primary .hero-header .header-text .title .text-title .line .text > span > span:nth-child(14) {
+  transform: translateY(0);
+}
+body .content.page-load-complete .wizard .theme.hero.primary .hero-header .header-text .title .text-title .line .text > span > span:nth-child(15) {
+  transform: translateY(0);
+}
+body .content.page-load-complete .wizard .theme.hero.primary .hero-header .header-text .title .text-title .line .text > span > span:nth-child(16) {
+  transform: translateY(0);
+}
+body .content.page-load-complete .wizard .theme.hero.primary .hero-header .header-text .title .text-title .line .text > span > span:nth-child(17) {
+  transform: translateY(0);
+}
+body .content.page-load-complete .wizard .theme.hero.primary .hero-header .header-text .title .text-title .line .text > span > span:nth-child(18) {
+  transform: translateY(0);
+}
+body .content.page-load-complete .wizard .theme.hero.primary .hero-header .header-text .title .text-title .line .text > span > span:nth-child(19) {
+  transform: translateY(0);
+}
+body .content.page-load-complete .wizard .theme.hero.primary .hero-header .header-text .title .text-title .line .text > span > span:nth-child(20) {
+  transform: translateY(0);
+}
 body .content.page-load-complete .wizard .theme.hero.primary .hero-header .header-text .subtitle .text-subtitle .line-mask:nth-child(1) .line {
   transform: translateY(0);
   transition-delay: 1.65s;
