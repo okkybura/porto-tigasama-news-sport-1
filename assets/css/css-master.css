@@ -11900,6 +11900,18 @@ body .content.page-load-start-1.page-load-progress-4 .loader .loader-loading .lo
   opacity: 1;
   transform: scale(1);
 }
+body .content.page-load-start-1.page-load-progress-5 .loader .loader-loading .loading-image .image-wrapper.primary .image:nth-child(6) img {
+  opacity: 1;
+  transform: scale(1);
+}
+body .content.page-load-start-1.page-load-progress-6 .loader .loader-loading .loading-image .image-wrapper.primary .image:nth-child(7) img {
+  opacity: 1;
+  transform: scale(1);
+}
+body .content.page-load-start-1.page-load-progress-7 .loader .loader-loading .loading-image .image-wrapper.primary .image:nth-child(8) img {
+  opacity: 1;
+  transform: scale(1);
+}
 body .content.page-load-start-1 .loader .loader-loading .loading-image .image-wrapper.primary > .wrapper-outer.saturate {
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
 }

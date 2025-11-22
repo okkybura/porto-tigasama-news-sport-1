@@ -642,6 +642,90 @@ body {
                 }
             }
 
+            &.page-load-progress-5 {
+
+                // Loader
+
+                .loader {
+                    .loader-loading {
+                        .loading-image {
+                            .image-wrapper {
+
+                                // Primary
+
+                                &.primary {
+                                    .image {
+                                        &:nth-child(6) {
+                                            img {
+                                                opacity         : 1;
+
+                                                transform       : scale(1);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            &.page-load-progress-6 {
+
+                // Loader
+
+                .loader {
+                    .loader-loading {
+                        .loading-image {
+                            .image-wrapper {
+
+                                // Primary
+
+                                &.primary {
+                                    .image {
+                                        &:nth-child(7) {
+                                            img {
+                                                opacity         : 1;
+
+                                                transform       : scale(1);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            &.page-load-progress-7 {
+
+                // Loader
+
+                .loader {
+                    .loader-loading {
+                        .loading-image {
+                            .image-wrapper {
+
+                                // Primary
+
+                                &.primary {
+                                    .image {
+                                        &:nth-child(8) {
+                                            img {
+                                                opacity         : 1;
+
+                                                transform       : scale(1);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
             // Loader
 
             .loader {
