@@ -17,8 +17,16 @@
 
     <!------- CSS ------->
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/6.11.1/css/flag-icons.min.css" />
-    <link rel="stylesheet" href="assets/css/css-master.min.css">
+    <!-- CSS - Mandatory -->
+
+    <link rel="stylesheet" href="assets/css/master/master.css">
+    <link rel="stylesheet" href="assets/css/master/master-font.css">
+    <link rel="stylesheet" href="assets/css/master/master-general.css">
+    <link rel="stylesheet" href="assets/css/master/master-loader.css">
+
+    <!-- CSS - Optional -->
+
+    <link rel="stylesheet" href="assets/css/master/master-wizard.css">
 </head>
 
 <!-- Desktop -->
@@ -930,24 +938,17 @@
 
     <!------- Script ------->
 
+    <!-- Script - Master -->
+
     <script src="assets/javascript/vendor-javascript.js"></script>
     <script src="assets/javascript/gsap.js"></script>
 
-    <script src="assets/javascript/custom-select2.js"></script>
+    <!-- Script - Custom -->
+
     <script src="assets/javascript/custom-javascript.js"></script>
 
     <script>
-
-        document.querySelectorAll(".text-mask").forEach((el) => {
-            const splitText = SplitText.create(el, {
-                type: "chars,words,lines",
-                linesClass: "line",
-                autoSplit: true,
-                mask: "lines",
-            });
-        });
-
-        $(document).ready(function () {
+        $(window).on('load', function () {
             
             // Hero - Primary
 
@@ -977,207 +978,6 @@
             });
         });
     </script>
-
-    <script>
-
-        // Button Magentic
-
-        var magnets = document.querySelectorAll('.btn-magnetic')
-        var strength = 20
-
-        magnets.forEach((magnet) => {
-            magnet.addEventListener('mousemove', moveMagnet);
-            magnet.addEventListener('mouseout', function (event) {
-                TweenMax.to(event.currentTarget, 1, { x: 0, y: 0, ease: Power4.easeOut })
-            });
-        });
-
-        function moveMagnet(event) {
-            var magnetButton = event.currentTarget
-            var bounding = magnetButton.getBoundingClientRect()
-
-            TweenMax.to(magnetButton, 1, {
-                x: (((event.clientX - bounding.left) / magnetButton.offsetWidth) - 0.5) * strength,
-                y: (((event.clientY - bounding.top) / magnetButton.offsetHeight) - 0.5) * strength,
-                ease: Power4.easeOut
-            })
-        }
-    </script>
-
-    <script>
-        function disableWheelScroll() {
-            window.addEventListener('wheel', preventWheel, { passive: false });
-        }
-
-        function enableWheelScroll() {
-            window.removeEventListener('wheel', preventWheel);
-        }
-
-        function preventWheel(e) {
-            e.preventDefault();
-        }
-
-        // Page Transition
-
-        $(window).on('load', function () {
-            gsap.fromTo("body",
-                { opacity: 0 },
-                { opacity: 1, duration: 0.75, ease: "cubic-bezier(0.625, 0.05, 0, 1)" }
-            );
-
-            $("a[href]").on("click", function (e) {
-                const href = $(this).attr("href");
-
-                if (!href || href === "#" || href.startsWith("javascript:void")) return;
-
-                e.preventDefault();
-                gsap.to("body", {
-                    opacity: 0,
-                    duration: 0.75,
-                    ease: "cubic-bezier(0.625, 0.05, 0, 1)",
-                    onComplete: () => window.location.href = href
-                });
-            });
-        });
-
-        // Page Loader
-
-        $(window).on('load', function () {
-            setTimeout(function () {
-                disableWheelScroll();
-            }, 0);
-
-            // Start Loader - Loading //
-
-            setTimeout(function () {
-                $('body .content').addClass('page-load-start-1');
-
-                // Loader - Loading
-
-                let loaderLoadingNumber = { value: 0 };
-
-                gsap.to(loaderLoadingNumber, {
-                    value: 100,
-                    duration: 5,
-                    ease: "power1.out",
-                    onUpdate: function () {
-                        $('#loadingNumber').text( Math.floor(loaderLoadingNumber.value) + '%' );
-                    },
-                });
-            }, 1000);
-            setTimeout(function () {
-                $('body .content').addClass('page-load-progress-1');
-            }, 2000);
-            setTimeout(function () {
-                $('body .content').addClass('page-load-progress-2');
-            }, 2500);
-            setTimeout(function () {
-                $('body .content').addClass('page-load-progress-3');
-            }, 3000);
-            setTimeout(function () {
-                $('body .content').addClass('page-load-progress-4');
-            }, 3500);
-            setTimeout(function () {
-                $('body .content').addClass('page-load-progress-5');
-            }, 4000);
-            setTimeout(function () {
-                $('body .content').addClass('page-load-progress-6');
-            }, 4500);
-            setTimeout(function () {
-                $('body .content').addClass('page-load-progress-7');
-            }, 5000);
-            setTimeout(function () {
-                $('body .content').addClass('page-load-start-2');
-            }, 6500);
-
-            // End Loader - Loading //
-
-            // Start Loader - Logo //
-
-            setTimeout(function () {
-                $('body .content').addClass('page-load-start-3');
-            }, 8000);
-            setTimeout(function () {
-                $('body .content').addClass('page-load-start-4');
-            }, 10000);
-            setTimeout(function () {
-                $('body .content').addClass('page-load-start-5');
-            }, 11000);
-
-            // End Loader - Logo //
-
-            setTimeout(function () {
-                $('body .content').addClass('page-load-complete');
- 
-                var interval = 6000;
-                var transitionTime = 2000;
-
-                $('.section-carousel').each(function () {
-                    var $carousel = $(this);
-                    var $cells = $carousel.find('.carousel-cell');
-                    var current = 0;
-                    var carouselInterval;
-                    var isPaused = false;
-
-                    $cells.eq(current).addClass('active');
-
-                    function startCarousel() {
-                        if (carouselInterval) clearInterval(carouselInterval);
-
-                        carouselInterval = setInterval(function () {
-                            var $currentCell = $cells.eq(current);
-
-                            current = (current + 1) % $cells.length;
-                            var $nextCell = $cells.eq(current);
-
-                            $currentCell.removeClass('active').addClass('leaving');
-                            $nextCell.addClass('active');
-
-                            setTimeout(function () {
-                                $currentCell.removeClass('leaving');
-                            }, transitionTime);
-
-                        }, interval);
-                    }
-
-                    startCarousel();
-
-                    $(document).on('visibilitychange', function () {
-                        if (document.hidden) {
-                            clearInterval(carouselInterval);
-                            isPaused = true;
-                        } else {
-                            startCarousel();
-                            isPaused = false;
-                        }
-                    });
-                });
-            }, 11500);
-            setTimeout(function () {
-                $('body .content').removeClass().addClass('content page-load page-load-complete');
-                enableWheelScroll();
-            }, 13500);
-        });
-    </script>
-
-    <!-- <script>
-        $('.nav-link, .navbar-background').on('mouseenter', function () {
-            $('.navbar.primary').addClass('active');
-            $('.navbar-background').addClass('active');
-        });
-
-        $('.nav-link, .navbar-background').on('mouseleave', function () {
-
-            const hoverNavMenu =
-                $('.nav-link:hover').length > 0 ||
-                $('.navbar-background:hover').length > 0;
-
-            if (!hoverNavMenu) {
-                $('.navbar.primary').removeClass('active');
-                $('.navbar-background').removeClass('active');
-            }
-        });
-    </script> -->
 
     <script>
 
@@ -1462,60 +1262,12 @@
                     markers: false,
                     invalidateOnRefresh: true
                 });
-
             });
         });
-
-        // $(document).ready(function () {
-
-        //     const cards = document.querySelectorAll(".card-stack");
-
-        //     cards.forEach((card, index) => {
-
-        //         gsap.set(card, {
-        //             rotateX: -45,
-        //             z: index * -1,
-        //             scale: 0.75 + index * 0.025,   // staggered scale for depth
-        //             transformOrigin: "bottom center",
-        //             transformStyle: "preserve-3d",
-        //         });
-
-        //         // Flip animation
-        //         gsap.to(card, {
-        //             rotateX: 0,
-        //             scale: 1,
-        //             ease: "power1.out",
-                    
-        //             scrollTrigger: {
-        //                 trigger: card,
-        //                 start: "top bottom-=50",
-        //                 end: "top top",
-        //                 scrub: true,
-        //                 markers: false,
-        //             }
-        //         });
-
-        //         // Pin each card so stacking works
-        //         ScrollTrigger.create({
-        //             trigger: card,
-        //             start: "center center+=22.5%",
-        //             pin: true,
-        //             pinSpacing: false,
-        //             markers: true,
-        //             end: () => "+=" + (cards.length * 100) + "%",
-        //             onUpdate: self => {
-        //                 cards.forEach(c => c.style.zIndex = 0);  // reset
-        //                 card.style.zIndex = 100;                 // active card on top
-        //             }
-        //         });
-        //     });
-        // });
-
     </script>
 
     <script>
         $(window).on('load', function () {
-
             ScrollTrigger.create({
                 trigger: ".service-list-footer",
                 pin: true,

@@ -38,6 +38,169 @@ targets.forEach(target => {
     });
 });
 
+/* -------------------- Loader Setting -------------------- */
+
+function disableWheelScroll() {
+    window.addEventListener('wheel', preventWheel, { passive: false });
+}
+
+function enableWheelScroll() {
+    window.removeEventListener('wheel', preventWheel);
+}
+
+function preventWheel(e) {
+    e.preventDefault();
+}
+
+// Page Transition
+
+$(window).on('load', function () {
+    gsap.fromTo("body",
+        { opacity: 0 },
+        { opacity: 1, duration: 0.75, ease: "cubic-bezier(0.625, 0.05, 0, 1)" }
+    );
+
+    $("a[href]").on("click", function (e) {
+        const href = $(this).attr("href");
+
+        if (!href || href === "#" || href.startsWith("javascript:void")) return;
+
+        e.preventDefault();
+        gsap.to("body", {
+            opacity: 0,
+            duration: 0.75,
+            ease: "cubic-bezier(0.625, 0.05, 0, 1)",
+            onComplete: () => window.location.href = href
+        });
+    });
+});
+
+// Page Loader
+
+$(window).on('load', function () {
+    setTimeout(function () {
+        disableWheelScroll();
+    }, 0);
+
+    // Start Loader - Loading //
+
+    setTimeout(function () {
+        $('body .content').addClass('page-load-start-1');
+
+        // Loader - Loading
+
+        let loaderLoadingNumber = { value: 0 };
+
+        gsap.to(loaderLoadingNumber, {
+            value: 100,
+            duration: 5,
+            ease: "power1.out",
+            onUpdate: function () {
+                $('#loadingNumber').text( Math.floor(loaderLoadingNumber.value) + '%' );
+            },
+        });
+    }, 1000);
+    setTimeout(function () {
+        $('body .content').addClass('page-load-progress-1');
+    }, 2000);
+    setTimeout(function () {
+        $('body .content').addClass('page-load-progress-2');
+    }, 2500);
+    setTimeout(function () {
+        $('body .content').addClass('page-load-progress-3');
+    }, 3000);
+    setTimeout(function () {
+        $('body .content').addClass('page-load-progress-4');
+    }, 3500);
+    setTimeout(function () {
+        $('body .content').addClass('page-load-progress-5');
+    }, 4000);
+    setTimeout(function () {
+        $('body .content').addClass('page-load-progress-6');
+    }, 4500);
+    setTimeout(function () {
+        $('body .content').addClass('page-load-progress-7');
+    }, 5000);
+    setTimeout(function () {
+        $('body .content').addClass('page-load-start-2');
+    }, 6500);
+
+    // End Loader - Loading //
+
+    // Start Loader - Logo //
+
+    setTimeout(function () {
+        $('body .content').addClass('page-load-start-3');
+    }, 8000);
+    setTimeout(function () {
+        $('body .content').addClass('page-load-start-4');
+    }, 10000);
+    setTimeout(function () {
+        $('body .content').addClass('page-load-start-5');
+    }, 11000);
+
+    // End Loader - Logo //
+
+    setTimeout(function () {
+        $('body .content').addClass('page-load-complete');
+
+        var interval = 6000;
+        var transitionTime = 2000;
+
+        $('.section-carousel').each(function () {
+            var $carousel = $(this);
+            var $cells = $carousel.find('.carousel-cell');
+            var current = 0;
+            var carouselInterval;
+            var isPaused = false;
+
+            $cells.eq(current).addClass('active');
+
+            function startCarousel() {
+                if (carouselInterval) clearInterval(carouselInterval);
+
+                carouselInterval = setInterval(function () {
+                    var $currentCell = $cells.eq(current);
+
+                    current = (current + 1) % $cells.length;
+                    var $nextCell = $cells.eq(current);
+
+                    $currentCell.removeClass('active').addClass('leaving');
+                    $nextCell.addClass('active');
+
+                    setTimeout(function () {
+                        $currentCell.removeClass('leaving');
+                    }, transitionTime);
+
+                }, interval);
+            }
+
+            startCarousel();
+
+            $(document).on('visibilitychange', function () {
+                if (document.hidden) {
+                    clearInterval(carouselInterval);
+                    isPaused = true;
+                } else {
+                    startCarousel();
+                    isPaused = false;
+                }
+            });
+        });
+    }, 11500);
+    setTimeout(function () {
+        $('body .content').removeClass().addClass('content page-load page-load-complete');
+        enableWheelScroll();
+    }, 13500);
+});
+
+/* -------------------- Navbar Setting -------------------- */
+
+$(window).scroll(function () {
+    $(".navbar").toggleClass("scroll", $(this).scrollTop() > 1)
+    $("#scroll-top").toggleClass("scroll", $(this).scrollTop() > 1)
+});
+
 /* -------------------- Custom Split Text Setting -------------------- */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -103,40 +266,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    $('.text-title-special').each(function () {
-        const $textSpan = $(this).find('.text');
-
-        $textSpan.each(function () {
-            const $this = $(this);
-            const text = $.trim($this.text());
-            let charSpans = '';
-
-            text.split('').forEach(function (char) {
-                if (char === ' ') {
-                    charSpans += `<span class="char space"> </span>`;
-                    return;
-                }
-
-                let extrudeSpans = '';
-                for (let i = 0; i < 20; i++) {
-                    extrudeSpans += `<span>${char}</span>`;
-                }
-
-                charSpans += `
-                        <span class ="char">
-                            <span class ="overlap">${char}</span>
-                            <span class ="base">${char}</span>
-                            <span class ="extrude">
-                                ${extrudeSpans}
-                            </span>
-                        </span>
-                        `;
-            });
-
-            $this.html(charSpans);
-        });
-    });
-
     // Splitting Text - Link - Navbar
 
     document.querySelectorAll('.link-default').forEach(link => {
@@ -197,20 +326,79 @@ document.addEventListener("DOMContentLoaded", () => {
                     `;
         }
     });
+
+    // Splitting Text - Text Mask
+
+    document.querySelectorAll(".text-mask").forEach((el) => {
+        const splitText = SplitText.create(el, {
+            type: "chars,words,lines",
+            linesClass: "line",
+            autoSplit: true,
+            mask: "lines",
+        });
+    });
+
+    // Splitting Text - Title Special
+
+    $('.text-title-special').each(function () {
+        const $textSpan = $(this).find('.text');
+
+        $textSpan.each(function () {
+            const $this = $(this);
+            const text = $.trim($this.text());
+            let charSpans = '';
+
+            text.split('').forEach(function (char) {
+                if (char === ' ') {
+                    charSpans += `<span class="char space"> </span>`;
+                    return;
+                }
+
+                let extrudeSpans = '';
+                for (let i = 0; i < 20; i++) {
+                    extrudeSpans += `<span>${char}</span>`;
+                }
+
+                charSpans += `
+                        <span class ="char">
+                            <span class ="overlap">${char}</span>
+                            <span class ="base">${char}</span>
+                            <span class ="extrude">
+                                ${extrudeSpans}
+                            </span>
+                        </span>
+                        `;
+            });
+
+            $this.html(charSpans);
+        });
+    });
 });
 
-/* -------------------- Navbar Setting -------------------- */
+/* -------------------- Button Setting -------------------- */
 
-$(window).scroll(function () {
-    $(".navbar").toggleClass("scroll", $(this).scrollTop() > 1)
-    $("#scroll-top").toggleClass("scroll", $(this).scrollTop() > 1)
+// Button Magentic
+
+var magnets = document.querySelectorAll('.btn-magnetic')
+var strength = 20
+
+magnets.forEach((magnet) => {
+    magnet.addEventListener('mousemove', moveMagnet);
+    magnet.addEventListener('mouseout', function (event) {
+        TweenMax.to(event.currentTarget, 1, { x: 0, y: 0, ease: Power4.easeOut })
+    });
 });
 
-/* -------------------- Compare Image Viewer Setting -------------------- */
+function moveMagnet(event) {
+    var magnetButton = event.currentTarget
+    var bounding = magnetButton.getBoundingClientRect()
 
-document.querySelectorAll(".compareImage").forEach((element) => {
-    new ImageCompare(element).mount();
-});
+    TweenMax.to(magnetButton, 1, {
+        x: (((event.clientX - bounding.left) / magnetButton.offsetWidth) - 0.5) * strength,
+        y: (((event.clientY - bounding.top) / magnetButton.offsetHeight) - 0.5) * strength,
+        ease: Power4.easeOut
+    })
+}
 
 /* -------------------- Flickty Setting -------------------- */
 
@@ -249,53 +437,3 @@ $('.carousel-triple').flickity({
     contain: true,
     wrapAround: true,
 });
-
-/* -------------------- File Uploader Setting -------------------- */
-
-// document.addEventListener("DOMContentLoaded", function () {
-//     if (window.File && window.FileList && window.FileReader) {
-//         const fileInput = document.getElementById("files");
-
-//         fileInput.addEventListener("change", function (e) {
-//             const files = e.target.files;
-
-//             for (let i = 0; i < files.length; i++) {
-//                 const f = files[i];
-//                 const reader = new FileReader();
-
-//                 reader.onload = function (e) {
-//                     const span = document.createElement("span");
-//                     span.className = "preview";
-
-//                     const img = document.createElement("img");
-//                     img.className = "imageThumb";
-//                     img.src = e.target.result;
-//                     img.title = f.name;
-
-//                     const btn = document.createElement("span");
-//                     btn.className = "remove";
-//                     btn.textContent = "Remove image";
-
-//                     btn.addEventListener("click", function () {
-//                         span.remove();
-//                         if (document.querySelectorAll(".box-preview .preview").length === 0) {
-//                             document.querySelector(".box-placeholder").classList.remove("hidden");
-//                         }
-//                     });
-
-//                     span.appendChild(img);
-//                     span.appendChild(btn);
-
-//                     document.querySelector(".box-preview").appendChild(span);
-//                     document.querySelector(".box-placeholder").classList.add("hidden");
-//                 };
-
-//                 reader.readAsDataURL(f);
-//             }
-//             fileInput.value = "";
-//         });
-//     }
-//     else {
-//         alert("Your browser doesn't support the File API");
-//     }
-// });
