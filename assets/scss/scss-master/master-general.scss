@@ -65,7 +65,7 @@
     --font-weight-caption                                       : 900;
     --font-weight-number                                        : 400;
     --font-weight-tag                                           : 900;
-    --font-weight-link                                          : 600;
+    --font-weight-link                                          : 400;
     --font-weight-button                                        : 600;
     --font-weight-textprice                                     : 900;
     --font-weight-sellprice                                     : 600;
@@ -84,9 +84,9 @@
 
     // Font - Size
 
-    --font-size-general                                         : 16;
+    --font-size-general                                         : 14;
     --font-size-title                                           : 50;
-    --font-size-subtitle                                        : 16;
+    --font-size-subtitle                                        : 15;
     --font-size-description                                     : 14;
     --font-size-date                                            : 16;
     --font-size-caption                                         : 16;
@@ -96,7 +96,7 @@
     --font-size-button                                          : 14;
     --font-size-icon                                            : 12;
     --font-size-textprice                                       : 20;
-    --font-size-sellprice                                       : 30;
+    --font-size-sellprice                                       : 28;
 
     --font-size-display1                                        : 60;
     --font-size-display2                                        : 60;
@@ -1320,6 +1320,8 @@ i {
 
                 span {
                     &.text, &.time {
+                        @include pr-5;
+
                         > span {
                             &:nth-child(1) {
                                 color           : var(--color-white);
@@ -1353,6 +1355,112 @@ i {
                             @include overflow-hidden;
 
                             > i {
+                                color               : var(--color-black);
+
+                                &:last-child {
+                                    @include position-absolute;
+
+                                    top             : 50%;
+                                    left            : -110%;
+
+                                    transform       : translateY(-50%);
+                                }
+                            }                            
+                        }
+                    }
+                }
+            }
+
+            &:hover {
+                span {
+                    &.icon {
+                        > span {
+                            > i {
+                                &:first-child {
+                                    transform       : translateX(110%);
+                                }
+                                
+                                &:last-child {
+                                    left            : 0;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // Tertiary
+
+        &.tertiary {
+            @include display-inline-block;
+
+            > span {
+                @include position-relative;
+                
+                @include display-flex;
+
+                @include align-items-center;
+
+                @include overflow-hidden;
+
+                @include width-100;
+
+                @include p-1;
+                @include pl-4;
+
+                justify-content         : space-between;
+
+                background              : var(--color-white);
+
+                border                  : none;
+                border-radius           : 50em;
+
+                > span {
+                    @include display-flex;
+
+                    @include align-items-center;
+                }
+
+                span {
+                    &.text, &.time {
+                        @include pr-5;
+                        
+                        > span {
+                            &:nth-child(1) {
+                                color           : var(--color-black);
+                            }
+
+                            &:nth-child(2) {
+                                color           : var(--color-black);
+                            }
+                        }
+                    }
+
+                    &.icon {
+                        @include display-inline-flex;
+
+                        @include align-items-center;
+
+                        justify-content         : center;
+
+                        width                   : calc(40 / var(--vw) * var(--multiplier));
+                        height                  : calc(40 / var(--vw) * var(--multiplier));
+
+                        background              : var(--color-black);
+
+                        border-radius           : 100%;
+
+                        > span {
+                            @include position-relative;
+
+                            @include display-inline-block;
+
+                            @include overflow-hidden;
+
+                            > i {
+                                color               : var(--color-white);
+
                                 &:last-child {
                                     @include position-absolute;
 

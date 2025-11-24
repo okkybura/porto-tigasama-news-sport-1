@@ -460,7 +460,7 @@
 
         z-index                 : 10;
 
-        background              : var(--color-white);
+        background              : var(--color-black);
     }
 
     // ----- Main - Theme ----- //
@@ -830,7 +830,7 @@
 
         // Service List
 
-        &.service-list {
+        &.package-list {
 
             // Primary
 
@@ -841,7 +841,7 @@
 
                 // Header
 
-                .service-list-header {
+                .package-list-header {
                     @include display-flex;
 
                     @include align-items-center;
@@ -864,6 +864,8 @@
                         @include position-absolute;
 
                         @include width-100;
+
+                        pointer-events              : none;
 
                         z-index                     : 10;
 
@@ -913,7 +915,7 @@
 
                 // Content
 
-                .service-list-content {
+                .package-list-content {
                     @include position-relative;
 
                     z-index                         : 10;
@@ -965,7 +967,7 @@
                                         padding-top                     : calc(50 / var(--vw) * var(--multiplier)) !important;
 
                                         border                          : calc(1 / var(--vw) * var(--multiplier)) solid rgba($color-black, 0.25);
-                                        border-radius                   : calc(10 / var(--vw) * var(--multiplier));
+                                        border-radius                   : calc(0 / var(--vw) * var(--multiplier));
                                     }
                                 }
                             }
@@ -974,7 +976,7 @@
                                 .image-outer {
                                     @include overflow-hidden;
 
-                                    border-radius               : calc(10 / var(--vw) * var(--multiplier));
+                                    border-radius               : calc(0 / var(--vw) * var(--multiplier));
 
                                     .image {
                                         img {
@@ -1027,7 +1029,7 @@
 
                                 .title {
                                     .text-title {
-                                        font-size               : calc(30 / var(--vw) * var(--multiplier));
+                                        @include h3;
 
                                         color                   : var(--color-black);
                                     }
@@ -1066,7 +1068,7 @@
                                         background          : transparent;
 
                                         border              : calc(1 / var(--vw) * var(--multiplier)) solid rgba($color-black, 0.25);
-                                        border-radius       : calc(5 / var(--vw) * var(--multiplier));
+                                        border-radius       : calc(0 / var(--vw) * var(--multiplier));
 
                                         .accordion-header {
                                             border-bottom   : none;
@@ -1152,7 +1154,7 @@
 
                 // Footer
 
-                .service-list-footer {
+                .package-list-footer {
                     @include position-relative;
 
                     @include text-align-center;
@@ -1223,6 +1225,85 @@
                         .caption {
                             > span {
                                 @include p;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // Destination List
+
+        &.destination-list {
+
+            // Primary
+
+            &.primary {
+                @include my-minus-1;
+
+                padding                     : calc(100 / var(--vw) * var(--multiplier)) 0;
+
+                // Header
+
+                .destination-list-header {
+                    @include text-align-center;
+
+                    @include mb-5;
+                    @include mx-auto;
+
+                    max-width               : 50%;
+
+                    .container {
+                        padding-bottom      : calc(75 / var(--vw) * var(--multiplier));
+                    }
+
+                    .header-text {
+                        @include mb-5;
+
+                        .title {
+                            @include mb-4;
+                        }
+                    }
+                }
+
+                // Content
+
+                .destination-list-content {
+                    .container-fluid {
+                        @include px-0;
+                    }
+
+                    .content-wrapper {
+
+                        // Primary
+
+                        &.primary {
+                            > .wrapper-inner {
+                                .col-wrapper-outer {
+                                    @include col-12;
+
+                                    .col-wrapper-inner {
+                                        @include col-3;
+
+                                        &:nth-child(2) {
+                                            @include col-6;
+                                        }
+                                    }
+                                }
+                            }
+
+                            .content-image {
+                                @include overflow-hidden;
+
+                                .image {
+                                    img {
+                                        object-fit              : cover;
+                                        
+                                        height                  : calc(650 / var(--vw) * var(--multiplier));
+
+                                        transform               : scale(1.10);
+                                    }
+                                }
                             }
                         }
                     }

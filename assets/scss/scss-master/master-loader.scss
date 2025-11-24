@@ -657,7 +657,9 @@ body {
         &.page-load-start-2 {
 
             #smooth-wrapper {
-                clip-path               : polygon(2.5% 5%, 97.5% 5%, 97.5% 95%, 2.5% 95%);
+                clip-path               : polygon(7.5% 10%, 92.5% 10%, 92.5% 90%, 7.5% 90%);
+
+                transition-delay        : 0.25s;
             }
 
             // Loader

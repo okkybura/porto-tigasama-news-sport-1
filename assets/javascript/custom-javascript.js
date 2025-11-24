@@ -192,6 +192,11 @@ $(window).on('load', function () {
         $('body .content').removeClass().addClass('content page-load page-load-complete');
         enableWheelScroll();
     }, 13500);
+
+    // setTimeout(function () {
+    //     $('body .content').removeClass().addClass('content page-load page-load-complete');
+    //     enableWheelScroll();
+    // }, 1000);
 });
 
 /* -------------------- Navbar Setting -------------------- */
