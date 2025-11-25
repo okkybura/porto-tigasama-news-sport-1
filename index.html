@@ -169,7 +169,7 @@
 
             <!-- Loader -->
 
-            <div class="loader">
+            <!-- <div class="loader">
                 <div class="loader-loading">
                     <div class="loading-caption">
                         <div class="caption">
@@ -270,7 +270,7 @@
                         </span>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <!--Navbar - Primary-->
 
@@ -315,7 +315,7 @@
                                     <a class="nav-link link-default primary" href="#">
                                         <span class="wrapper">
                                             <span class="text">
-                                                Boat
+                                                Story
                                             </span>
                                         </span>
                                     </a>
@@ -525,23 +525,6 @@
                                                     </p>
                                                 </div>
                                             </div>
-                                            <div class="header-button">
-                                                <div class="button">
-                                                    <a class="btn btn-block btn-content btn-default btn-solid tertiary">
-                                                        <span class="wrapper">
-                                                            <span class="text">
-                                                                Discover More
-                                                            </span>
-                                                            <span class="icon">
-                                                                <span>
-                                                                    <i class="fas fa-arrow-right"></i>
-                                                                    <i class="fas fa-arrow-right"></i>
-                                                                </span>
-                                                            </span>
-                                                        </span>
-                                                    </a>
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
 
@@ -549,34 +532,52 @@
 
                                     <div class="destination-list-content">
                                         <div class="container-fluid">
-                                            <div class="content-wrapper primary">
-                                                <div class="wrapper-inner">
-                                                    <div class="row">
-                                                        <div class="col-wrapper-outer">
-                                                            <div class="row">
-                                                                <div class="col-wrapper-inner">
-                                                                    <div class="content-image">
-                                                                        <div class="image" data-speed="0.85">
-                                                                            <img src="/assets/images/root/package-list-primary-content-image-1.jpg" />
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-wrapper-inner">
-                                                                    <div class="content-image">
-                                                                        <div class="image" data-speed="0.85">
-                                                                            <img src="/assets/images/root/hero-background-1.jpg" />
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-wrapper-inner">
-                                                                    <div class="content-image">
-                                                                        <div class="image" data-speed="0.85">
-                                                                            <img src="/assets/images/root/package-list-primary-content-image-1.jpg" />
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
+                                            <div class="content-carousel">
+                                                <div class="carousel-main">
+                                                    <div class="carousel-cell">
+                                                        <div class="cell-image">
+                                                            <div class="image" data-speed="0.85">
+                                                                <img src="/assets/images/root/hero-background-1.jpg" />
                                                             </div>
-                                                        </div>
+                                                        </div>  
+                                                    </div>
+                                                    <div class="carousel-cell">
+                                                        <div class="cell-image">
+                                                            <div class="image" data-speed="0.85">
+                                                                <img src="/assets/images/root/hero-background-1.jpg" />
+                                                            </div>
+                                                        </div>  
+                                                    </div>
+                                                    <div class="carousel-cell">
+                                                        <div class="cell-image">
+                                                            <div class="image" data-speed="0.85">
+                                                                <img src="/assets/images/root/hero-background-1.jpg" />
+                                                            </div>
+                                                        </div>  
+                                                    </div>
+                                                </div>
+                                        
+                                                <div class="carousel-nav">
+                                                    <div class="carousel-cell">
+                                                        <div class="cell-image">
+                                                            <div class="image" data-speed="0.85">
+                                                                <img src="/assets/images/root/hero-background-1.jpg" />
+                                                            </div>
+                                                        </div>  
+                                                    </div>
+                                                    <div class="carousel-cell">
+                                                        <div class="cell-image">
+                                                            <div class="image" data-speed="0.85">
+                                                                <img src="/assets/images/root/hero-background-1.jpg" />
+                                                            </div>
+                                                        </div>  
+                                                    </div>
+                                                    <div class="carousel-cell">
+                                                        <div class="cell-image">
+                                                            <div class="image" data-speed="0.85">
+                                                                <img src="/assets/images/root/hero-background-1.jpg" />
+                                                            </div>
+                                                        </div>  
                                                     </div>
                                                 </div>
                                             </div>
@@ -1010,10 +1011,6 @@
                                 </section>
                             </div>
                         </div>
-
-                        <footer class="footbar primary" data-speed="0.5">
-
-                        </footer>
                     </div>
                 </div>
             </div>
@@ -1030,6 +1027,22 @@
     <!-- Script - Custom -->
 
     <script src="assets/javascript/custom-javascript.js"></script>
+
+    <script>
+var flkMain = new Flickity('.carousel-main', {
+    cellAlign: 'left',
+    contain: true,
+    pageDots: false
+});
+
+var flkNav = new Flickity('.carousel-nav', {
+    asNavFor: '.carousel-main',
+    draggable: false,
+    prevNextButtons: false,
+    pageDots: false,
+    groupCells: true,
+});
+    </script>
 
     <script>
         $(window).on('load', function () {

@@ -84,119 +84,119 @@ $(window).on('load', function () {
 
     // Start Loader - Loading //
 
-    setTimeout(function () {
-        $('body .content').addClass('page-load-start-1');
+    // setTimeout(function () {
+    //     $('body .content').addClass('page-load-start-1');
 
-        // Loader - Loading
+    //     // Loader - Loading
 
-        let loaderLoadingNumber = { value: 0 };
+    //     let loaderLoadingNumber = { value: 0 };
 
-        gsap.to(loaderLoadingNumber, {
-            value: 100,
-            duration: 5,
-            ease: "power1.out",
-            onUpdate: function () {
-                $('#loadingNumber').text( Math.floor(loaderLoadingNumber.value) + '%' );
-            },
-        });
-    }, 1000);
-    setTimeout(function () {
-        $('body .content').addClass('page-load-progress-1');
-    }, 2000);
-    setTimeout(function () {
-        $('body .content').addClass('page-load-progress-2');
-    }, 2500);
-    setTimeout(function () {
-        $('body .content').addClass('page-load-progress-3');
-    }, 3000);
-    setTimeout(function () {
-        $('body .content').addClass('page-load-progress-4');
-    }, 3500);
-    setTimeout(function () {
-        $('body .content').addClass('page-load-progress-5');
-    }, 4000);
-    setTimeout(function () {
-        $('body .content').addClass('page-load-progress-6');
-    }, 4500);
-    setTimeout(function () {
-        $('body .content').addClass('page-load-progress-7');
-    }, 5000);
-    setTimeout(function () {
-        $('body .content').addClass('page-load-start-2');
-    }, 6500);
+    //     gsap.to(loaderLoadingNumber, {
+    //         value: 100,
+    //         duration: 5,
+    //         ease: "power1.out",
+    //         onUpdate: function () {
+    //             $('#loadingNumber').text( Math.floor(loaderLoadingNumber.value) + '%' );
+    //         },
+    //     });
+    // }, 1000);
+    // setTimeout(function () {
+    //     $('body .content').addClass('page-load-progress-1');
+    // }, 2000);
+    // setTimeout(function () {
+    //     $('body .content').addClass('page-load-progress-2');
+    // }, 2500);
+    // setTimeout(function () {
+    //     $('body .content').addClass('page-load-progress-3');
+    // }, 3000);
+    // setTimeout(function () {
+    //     $('body .content').addClass('page-load-progress-4');
+    // }, 3500);
+    // setTimeout(function () {
+    //     $('body .content').addClass('page-load-progress-5');
+    // }, 4000);
+    // setTimeout(function () {
+    //     $('body .content').addClass('page-load-progress-6');
+    // }, 4500);
+    // setTimeout(function () {
+    //     $('body .content').addClass('page-load-progress-7');
+    // }, 5000);
+    // setTimeout(function () {
+    //     $('body .content').addClass('page-load-start-2');
+    // }, 6500);
 
-    // End Loader - Loading //
+    // // End Loader - Loading //
 
-    // Start Loader - Logo //
+    // // Start Loader - Logo //
 
-    setTimeout(function () {
-        $('body .content').addClass('page-load-start-3');
-    }, 8000);
-    setTimeout(function () {
-        $('body .content').addClass('page-load-start-4');
-    }, 10000);
-    setTimeout(function () {
-        $('body .content').addClass('page-load-start-5');
-    }, 11000);
+    // setTimeout(function () {
+    //     $('body .content').addClass('page-load-start-3');
+    // }, 8000);
+    // setTimeout(function () {
+    //     $('body .content').addClass('page-load-start-4');
+    // }, 10000);
+    // setTimeout(function () {
+    //     $('body .content').addClass('page-load-start-5');
+    // }, 11000);
 
-    // End Loader - Logo //
+    // // End Loader - Logo //
 
-    setTimeout(function () {
-        $('body .content').addClass('page-load-complete');
+    // setTimeout(function () {
+    //     $('body .content').addClass('page-load-complete');
 
-        var interval = 6000;
-        var transitionTime = 2000;
+    //     var interval = 6000;
+    //     var transitionTime = 2000;
 
-        $('.section-carousel').each(function () {
-            var $carousel = $(this);
-            var $cells = $carousel.find('.carousel-cell');
-            var current = 0;
-            var carouselInterval;
-            var isPaused = false;
+    //     $('.section-carousel').each(function () {
+    //         var $carousel = $(this);
+    //         var $cells = $carousel.find('.carousel-cell');
+    //         var current = 0;
+    //         var carouselInterval;
+    //         var isPaused = false;
 
-            $cells.eq(current).addClass('active');
+    //         $cells.eq(current).addClass('active');
 
-            function startCarousel() {
-                if (carouselInterval) clearInterval(carouselInterval);
+    //         function startCarousel() {
+    //             if (carouselInterval) clearInterval(carouselInterval);
 
-                carouselInterval = setInterval(function () {
-                    var $currentCell = $cells.eq(current);
+    //             carouselInterval = setInterval(function () {
+    //                 var $currentCell = $cells.eq(current);
 
-                    current = (current + 1) % $cells.length;
-                    var $nextCell = $cells.eq(current);
+    //                 current = (current + 1) % $cells.length;
+    //                 var $nextCell = $cells.eq(current);
 
-                    $currentCell.removeClass('active').addClass('leaving');
-                    $nextCell.addClass('active');
+    //                 $currentCell.removeClass('active').addClass('leaving');
+    //                 $nextCell.addClass('active');
 
-                    setTimeout(function () {
-                        $currentCell.removeClass('leaving');
-                    }, transitionTime);
+    //                 setTimeout(function () {
+    //                     $currentCell.removeClass('leaving');
+    //                 }, transitionTime);
 
-                }, interval);
-            }
+    //             }, interval);
+    //         }
 
-            startCarousel();
+    //         startCarousel();
 
-            $(document).on('visibilitychange', function () {
-                if (document.hidden) {
-                    clearInterval(carouselInterval);
-                    isPaused = true;
-                } else {
-                    startCarousel();
-                    isPaused = false;
-                }
-            });
-        });
-    }, 11500);
-    setTimeout(function () {
-        $('body .content').removeClass().addClass('content page-load page-load-complete');
-        enableWheelScroll();
-    }, 13500);
-
+    //         $(document).on('visibilitychange', function () {
+    //             if (document.hidden) {
+    //                 clearInterval(carouselInterval);
+    //                 isPaused = true;
+    //             } else {
+    //                 startCarousel();
+    //                 isPaused = false;
+    //             }
+    //         });
+    //     });
+    // }, 11500);
     // setTimeout(function () {
     //     $('body .content').removeClass().addClass('content page-load page-load-complete');
     //     enableWheelScroll();
-    // }, 1000);
+    // }, 13500);
+
+    setTimeout(function () {
+        $('body .content').removeClass().addClass('content page-load page-load-complete');
+        enableWheelScroll();
+    }, 1000);
 });
 
 /* -------------------- Navbar Setting -------------------- */
