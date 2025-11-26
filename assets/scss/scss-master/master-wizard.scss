@@ -378,9 +378,9 @@
     }
 }
 
-// Alert Text
+// Demo Text
 
-.alert-text {
+.demo-text {
 
     // Primary
 
@@ -407,7 +407,7 @@
 
         background          : var(--color-black);
 
-        @include media-breakpoint-down(md) {
+        @include media-breakpoint-down(lg) {
 
             @include display-flex;
         }
@@ -640,6 +640,8 @@
                         top                             : 0;
                         left                            : 0;
 
+                        transform                       : scale(1.05);
+
                         transition                      : 2s var(--cubic-bezier-2);
 
                         clip-path                       : inset(0 100% 0 0);
@@ -687,7 +689,16 @@
 
                     .header-text {
                         .title {
+                            @include position-absolute;
+
+                            @include width-100;
+
                             @include mb-0;
+
+                            top                             : 40%;
+                            left                            : 50%;
+
+                            transform                       : translate(-50%, -50%);
 
                             .text-title {
                                 @include mb-0;

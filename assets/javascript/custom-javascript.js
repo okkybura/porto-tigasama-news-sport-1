@@ -73,19 +73,24 @@ $(window).on('load', function () {
 // Page Loader
 
 $(window).on('load', function () {
-    gsap.fromTo("body",
-        { opacity: 0 },
-        { opacity: 1, duration: 1, ease: "cubic-bezier(0.625, 0.05, 0, 1)" }
-    );
+
 
     setTimeout(function () {
         disableWheelScroll();
+        gsap.fromTo("body",
+            { opacity: 0 },
+            { opacity: 1, duration: 1 }
+        );
     }, 0);
 
     // Start Loader - Loading //
 
     setTimeout(function () {
         $('body .content').addClass('page-load-start-1');
+    }, 1000); 
+
+    setTimeout(function () {
+        $('body .content').addClass('page-load-start-2');
 
         // Loader - Loading
 
@@ -99,45 +104,45 @@ $(window).on('load', function () {
                 $('#loadingNumber').text( Math.floor(loaderLoadingNumber.value) + '%' );
             },
         });
-    }, 1000);
-    setTimeout(function () {
-        $('body .content').addClass('page-load-progress-1');
-    }, 2000);
-    setTimeout(function () {
-        $('body .content').addClass('page-load-progress-2');
-    }, 2500);
-    setTimeout(function () {
-        $('body .content').addClass('page-load-progress-3');
     }, 3000);
     setTimeout(function () {
-        $('body .content').addClass('page-load-progress-4');
+        $('body .content').addClass('page-load-progress-1');
     }, 3500);
     setTimeout(function () {
-        $('body .content').addClass('page-load-progress-5');
+        $('body .content').addClass('page-load-progress-2');
     }, 4000);
     setTimeout(function () {
-        $('body .content').addClass('page-load-progress-6');
+        $('body .content').addClass('page-load-progress-3');
     }, 4500);
     setTimeout(function () {
-        $('body .content').addClass('page-load-progress-7');
+        $('body .content').addClass('page-load-progress-4');
     }, 5000);
     setTimeout(function () {
-        $('body .content').addClass('page-load-start-2');
+        $('body .content').addClass('page-load-progress-5');
+    }, 5500);
+    setTimeout(function () {
+        $('body .content').addClass('page-load-progress-6');
+    }, 6000);
+    setTimeout(function () {
+        $('body .content').addClass('page-load-progress-7');
     }, 6500);
+    setTimeout(function () {
+        $('body .content').addClass('page-load-start-3');
+    }, 8000);
 
     // End Loader - Loading //
 
     // Start Loader - Logo //
 
     setTimeout(function () {
-        $('body .content').addClass('page-load-start-3');
-    }, 8000);
-    setTimeout(function () {
         $('body .content').addClass('page-load-start-4');
-    }, 10000);
+    }, 9500);
     setTimeout(function () {
         $('body .content').addClass('page-load-start-5');
-    }, 11000);
+    }, 11500);
+    setTimeout(function () {
+        $('body .content').addClass('page-load-start-6');
+    }, 12500);
 
     // End Loader - Logo //
 
@@ -187,11 +192,11 @@ $(window).on('load', function () {
                 }
             });
         });
-    }, 11500);
+    }, 13000);
     setTimeout(function () {
         $('body .content').removeClass().addClass('content page-load page-load-complete');
         enableWheelScroll();
-    }, 13500);
+    }, 17500);
 
     // setTimeout(function () {
     //     $('body .content').removeClass().addClass('content page-load page-load-complete');

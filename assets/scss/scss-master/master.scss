@@ -2,8 +2,8 @@
 
 // -------------------- Master - Vendor -------------------- //
 
-@import "../../../node_modules/bootstrap/scss/bootstrap";
-@import "../../../node_modules/@fortawesome/fontawesome-free/css/all.css";
-@import "../../../node_modules/mouse-follower/src/scss/index";
-@import "../../../node_modules/flickity/css/flickity.css";
-@import "../../../node_modules/select2/dist/css/select2.css";
+@import "../../css/vendor/bootstrap.css";
+@import "../../css/vendor/font-awesome.css";
+@import "../../css/vendor/mouse-follower.scss";
+@import "../../css/vendor/flickity.css";
+@import "../../css/vendor/select2.css";

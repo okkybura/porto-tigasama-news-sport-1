@@ -67,16 +67,24 @@ body {
                                 @include font-primary;
                                 @include p;
 
-                                left            : 50%;
+                                left                    : 50%;
 
-                                transform       : translateX(-50%);
+                                transform               : translateX(-50%);
 
                                 &.text {
-                                    top         : calc(35 / var(--vw) * var(--multiplier));
+                                    top                 : calc(35 / var(--vw) * var(--multiplier));
+
+                                    > span {
+                                        transform       : translateY(-150%);
+                                    }
                                 }
 
                                 &.number {
-                                    bottom      : calc(35 / var(--vw) * var(--multiplier));
+                                    bottom              : calc(35 / var(--vw) * var(--multiplier));
+
+                                    > span {
+                                        transform       : translateY(150%);
+                                    }
                                 }
 
                                 > span {
@@ -106,7 +114,7 @@ body {
                                 width                   : calc(300 / var(--vw) * var(--multiplier));
                                 height                  : calc(300 / var(--vw) * var(--multiplier));
 
-                                clip-path               : polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+                                clip-path               : polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%);
 
                                 transition              : 2.5s var(--cubic-bezier-1);
 
@@ -444,6 +452,46 @@ body {
 
         &.page-load-start-1 {
 
+            // Loader
+
+            .loader {
+                .loader-loading {
+                    .loading-caption {
+                        .caption {
+                            > span {
+                                &.text {
+                                    > span {
+                                        transform           : translateY(0);
+                                    }
+                                }
+
+                                &.number {
+                                    > span {
+                                        transform           : translateY(0);
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .loading-image {
+                        .image-wrapper {
+
+                            // Primary
+
+                            &.primary {
+                               clip-path                : polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+
+                               transform                : scale(1);                             
+                            }
+                        }
+                    }
+                }
+            }
+        }    
+        
+        &.page-load-start-2 {
+
             &.page-load-progress-1 {
 
                 // Loader
@@ -658,6 +706,8 @@ body {
 
                                 .image {
                                     transform           : translate(-50%, -50%) scale(1);
+
+                                    transition          : 7.5s var(--cubic-bezier-1);
                                 }
                             }
                         }
@@ -666,7 +716,7 @@ body {
             }
         }
 
-        &.page-load-start-2 {
+        &.page-load-start-3 {
 
             #smooth-wrapper {
                 clip-path               : polygon(7.5% 10%, 92.5% 10%, 92.5% 90%, 7.5% 90%);
@@ -718,7 +768,7 @@ body {
             }
         }    
 
-        &.page-load-start-3 {
+        &.page-load-start-4 {
 
             // Loader
 
@@ -751,7 +801,7 @@ body {
             }
         }
 
-        &.page-load-start-4 {
+        &.page-load-start-5 {
 
             #smooth-wrapper {
                 clip-path               : polygon(0 0, 100% 0, 100% 100%, 0% 100%);
@@ -786,7 +836,7 @@ body {
             }
         }
 
-        &.page-load-start-5 {
+        &.page-load-start-6 {
 
             // Loader
 
@@ -909,9 +959,9 @@ body {
                             }
 
                             .navbar-hamburger {
-                                border-right                : calc(1 / var(--vw) * var(--multiplier)) solid rgba($color-white, 0.25);
+                                border-right                    : calc(1 / var(--vw) * var(--multiplier)) solid rgba($color-white, 0.25);
 
-                                transition-delay            : 1.65s; 
+                                transition-delay                : 1.65s; 
 
                                 .hamburger-icon {
                                     transform                   : translateY(0);

@@ -234,7 +234,7 @@
   opacity: 1;
 }
 
-.alert-text.primary {
+.demo-text.primary {
   position: fixed;
   display: none;
   align-items: center;
@@ -248,8 +248,8 @@
   transform: translate(-50%, -50%);
   background: var(--color-black);
 }
-@media (max-width: 991.98px) {
-  .alert-text.primary {
+@media (max-width: 1199.98px) {
+  .demo-text.primary {
     display: flex;
   }
 }
@@ -378,6 +378,7 @@
   position: absolute;
   top: 0;
   left: 0;
+  transform: scale(1.05);
   transition: 2s var(--cubic-bezier-2);
   clip-path: inset(0 100% 0 0);
 }
@@ -401,7 +402,12 @@
   height: 100% !important;
 }
 .wizard .theme.hero.primary .hero-header .header-text .title {
+  position: absolute;
+  width: 100% !important;
   margin-bottom: 0 !important;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 .wizard .theme.hero.primary .hero-header .header-text .title .text-title {
   margin-bottom: 0 !important;
