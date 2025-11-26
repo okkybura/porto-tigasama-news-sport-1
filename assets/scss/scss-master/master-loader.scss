@@ -316,6 +316,18 @@ body {
                                 }
                             }
 
+                            .navbar-hamburger {
+                                border-right                : calc(1 / var(--vw) * var(--multiplier)) solid rgba($color-white, 0);
+
+                                transition                  : 2s var(--cubic-bezier-2);
+
+                                .hamburger-icon {
+                                    transform               : translateY(calc(-30 / var(--vw) * var(--multiplier)));  
+                                    
+                                    transition              : 2s var(--cubic-bezier-1);
+                                }
+                            }
+
                             .navbar-nav {
                                 .nav-item {
                                     transition              : 2s var(--cubic-bezier-2);
@@ -893,6 +905,18 @@ body {
                                             transition-delay    : 1.65s; 
                                         }
                                     }
+                                }
+                            }
+
+                            .navbar-hamburger {
+                                border-right                : calc(1 / var(--vw) * var(--multiplier)) solid rgba($color-white, 0.25);
+
+                                transition-delay            : 1.65s; 
+
+                                .hamburger-icon {
+                                    transform                   : translateY(0);
+
+                                    transition-delay            : 1.65s; 
                                 }
                             }
 

@@ -41,7 +41,7 @@
     // Font - Family
 
     --font-family-primary                                       : 'PPMori';
-    --font-family-secondary                                     : 'EditorialNew';
+    --font-family-secondary                                     : 'PPMori';
 
     --font-family-general                                       : 'PPMori';
     --font-family-title                                         : 'PPMori';
@@ -84,16 +84,16 @@
 
     // Font - Size
 
-    --font-size-general                                         : 14;
+    --font-size-general                                         : 13;
     --font-size-title                                           : 50;
-    --font-size-subtitle                                        : 15;
-    --font-size-description                                     : 14;
+    --font-size-subtitle                                        : 14;
+    --font-size-description                                     : 13;
     --font-size-date                                            : 16;
     --font-size-caption                                         : 16;
     --font-size-number                                          : 90;
     --font-size-tag                                             : 20;
     --font-size-link                                            : 13;
-    --font-size-button                                          : 14;
+    --font-size-button                                          : 13;
     --font-size-icon                                            : 12;
     --font-size-textprice                                       : 20;
     --font-size-sellprice                                       : 28;
@@ -134,7 +134,7 @@
 @include media-breakpoint-down(sm) {
 
     :root {
-        --vw                            : 400;
+        --vw                            : 600;
 
         --button-type-solid-size        : 65;
     }
@@ -1500,6 +1500,7 @@ i {
         // Primary
 
         &.primary {
+            font-weight                     : var(--font-weight-regular);
             font-size                       : calc(13 / var(--vw) * var(--multiplier));
 
             color                           : var(--color-white);
